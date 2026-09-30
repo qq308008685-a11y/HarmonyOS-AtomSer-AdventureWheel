@@ -1,0 +1,7 @@
+{
+  "src": [
+    "pages/SetupPage",
+    "pages/WheelPage",
+    "pages/TaskLibraryPage"
+  ]
+}
