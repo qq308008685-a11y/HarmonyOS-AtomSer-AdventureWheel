@@ -1,0 +1,91 @@
+<article lang="zh-CN" style="font-family:Microsoft YaHei,Arial,sans-serif;line-height:1.8;color:#361621;overflow-wrap:anywhere">
+  <h1>冒险大转盘实践操作</h1>
+  <p>用现有工程完成“选玩法 → 确认任务 → 轮流转盘 → 管理本地任务 → 文件迁移”的闭环。建议先运行，再沿数据流阅读代码，最后独立验收。环境就绪后预计约 120 分钟，不含工具下载与签名准备。</p>
+  <p><strong>验证边界：</strong>2026-09-30 已有 17 项纯逻辑测试通过及无签名 Release 构建成功记录；效果截图来自 2026-08-26 API 24 手机模拟器。本次新包设备运行、最低 API 20、真机表现，以及 TXT 实际接收与再次导入仍待补齐。</p>
+  <h2>实践步骤</h2>
+  <ol>
+    <li>
+      <h3>检查环境并打开工程</h3>
+      <p><strong>目标：</strong>确认工具可用，避免把环境缺失误当作代码问题。</p>
+      <p><strong>操作：</strong>在 DevEco Studio 打开包含 <code>AppScope/</code>、<code>entry/</code>、<code>build-profile.json5</code> 的工程根目录，等待同步。核对配套 SDK、Node.js、Java 和 Hvigor；根构建配置的目标版本为 <code>6.1.0(23)</code>，最低兼容版本为 <code>6.0.0(20)</code>，编译 SDK 随 IDE。当前已有构建使用配套 API 26 SDK，这不代表最低设备版本变成 API 26。</p>
+      <p>如使用 AI 辅助，可输入：</p>
+      <blockquote>我准备开发一个鸿蒙元服务。请先检查当前环境是否具备必要的开发工具，如果有缺失，先告诉我应该怎么处理，由我来决定。</blockquote>
+      <p><strong>完成标志：</strong>IDE 识别 entry 模块，能打开 <code>SetupPage.ets</code>，同步没有阻断错误。不擅自安装或切换工具、不要求上传签名私钥。</p>
+    </li>
+    <li>
+      <h3>构建并完成最短体验</h3>
+      <p><strong>目标：</strong>先确认工程能构建，再检查基本交互。</p>
+      <p><strong>操作：</strong>通过 IDE 构建菜单生成 HAP。公开工程默认无签名；安装运行按设备要求配置自己的调试签名，签名材料不提交源码。启动手机模拟器，运行 entry；选择混合局、6 个任务、适中，点击“立即开始”，确认清单后开局。点击转盘中心“开始”，待结果出现后交给下一位，再转一次。</p>
+      <p><strong>完成标志：</strong>构建日志为 <code>BUILD SUCCESSFUL</code>，生成本次新 HAP；首页名称正确，两轮任务不同，已交接扇区变灰、显示“完成”，剩余数减少。无签名打包成功不等于包可直接安装。</p>
+    </li>
+    <li>
+      <h3>追踪任务生成与确认</h3>
+      <p><strong>目标：</strong>理解用户设置如何变成一份确定的本局清单。</p>
+      <p><strong>操作：</strong>阅读 <code>pages/SetupPage.ets</code>、<code>model/GameConfig.ets</code> 和 <code>engine/TaskEngine.ets</code>。追踪模式、任务数和最高挑战程度的筛选；检查启用的自定义任务如何进入候选，Fisher–Yates 洗牌如何生成清单。分别体验重新生成、关闭确认层和确认开局。</p>
+      <p><strong>完成标志：</strong>清单为 2–20 条且符合玩法；自定义任务最多占 <code>floor(任务数 × 0.5)</code>；关闭确认层不开始游戏。生成清单和单次转盘命中是两套不同的随机操作。</p>
+    </li>
+    <li>
+      <h3>理解转盘停止、结果动画和去重</h3>
+      <p><strong>目标：</strong>让指针结果、任务卡片和本局完成状态保持一致。</p>
+      <p><strong>操作：</strong>阅读 <code>engine/WheelRoundState.ets</code>、<code>components/WheelCanvas.ets</code> 和 <code>pages/WheelPage.ets</code>。先从未处理索引选目标，再计算停止角度；观察旋转期间重复点击、命中强调及卡片入场。连续交接到最后一个任务，检查“完成本局”；也检查自愿跳过后交接。</p>
+      <p><strong>完成标志：</strong>旋转期间不会启动第二次抽取；卡片与指针对应，居中入场。交接后当前任务退出本局候选，扇区位置不变但变灰；本局耗尽可结束。新开一局可以再次出现旧任务。这是 2.5D Canvas 效果，不是独立 3D 引擎。</p>
+    </li>
+    <li>
+      <h3>维护任务库并检查持久化</h3>
+      <p><strong>目标：</strong>验证内置任务只读、自定义任务可维护及统一字数规则。</p>
+      <p><strong>操作：</strong>在任务库浏览和筛选 190 条内置任务；切到“我添加的”，新增“大冒险 / 轻松”的“在十秒内说出三种水果”，编辑、启停并重新启动元服务。阅读 <code>store/LocalTaskStore.ets</code>、<code>store/PreferenceStore.ets</code> 和 <code>service/TaskTextRules.ets</code>。尝试空正文、31 个汉字与包含 emoji 的任务。</p>
+      <p><strong>完成标志：</strong>重启后记录保留；内置内容没有编辑删除入口，停用项不参加抽样。正文最多 30 个 Unicode 码点，输入、保存、导入使用同一规则。格式校验不能判断任务是否安全适宜。</p>
+    </li>
+    <li>
+      <h3>检查 JSON / TXT 导入导出</h3>
+      <p><strong>目标：</strong>用版本化文件迁移自定义内容，避免覆盖已有数据。</p>
+      <p><strong>操作：</strong>先导出 JSON，再重复导入；阅读 <code>TaskTransferValidator.ets</code> 与 <code>TaskTransferPackageBuilder.ets</code>。检查未知版本、非法 JSON、重复任务、无效字段、超长正文以及超过 1 MiB 的文件。TXT 正文仍是 JSON，不是普通逐行任务列表。可用以下无私人信息的示例：</p>
+      <pre style="white-space:pre-wrap;background:#fff7e6;padding:16px;border:1px solid #e6cecf"><code>{
+  "format": "adventure-wheel-tasks",
+  "version": 1,
+  "tasks": [
+    {
+      "type": "dare",
+      "level": "light",
+      "text": "在十秒内说出三种水果",
+      "enabled": true
+    }
+  ]
+}</code></pre>
+      <p><strong>完成标志：</strong>导入先显示新增、重复及无效条数，确认后只合并新任务，不覆盖原记录。传输字段只有正文、类型、程度、启用状态，不包含本地 ID、时间戳或内置任务。</p>
+    </li>
+    <li>
+      <h3>验证实际文件接收与跨设备迁移</h3>
+      <p><strong>目标：</strong>验证“带走任务”，不止验证“打开应用”。</p>
+      <p><strong>操作：</strong>点击“分享我的任务”，阅读 <code>service/TaskTransferService.ets</code>。确认生成的 <code>adventure-wheel-my-tasks.txt</code> 使用 JSON 正文，通过文件 URI、只读授权、<code>text/plain</code> 和 <code>ohos.want.action.sendData</code> 路由。目标列表取决于已安装应用；仅有一个匹配应用时可能直接打开。实际取得文件后，在另一设备导入，并重复导入检查去重。</p>
+      <p><strong>完成标志：</strong>接收端确实取得可读取的文件，目标设备恢复四个可携带字段。没有接收应用时使用“导出任务”作为替代路径。当前历史记录只确认系统路由启动，完整接收与再导入仍待验收。</p>
+    </li>
+    <li>
+      <h3>运行规则测试并记录设备验收</h3>
+      <p><strong>目标：</strong>分别给出规则、构建、设备和文件传递的结论。</p>
+      <p><strong>操作：</strong>在工程根目录使用 DevEco Studio 配套 Node.js 运行逻辑测试：</p>
+      <pre style="white-space:pre-wrap;background:#fff7e6;padding:16px;border:1px solid #e6cecf"><code class="language-powershell">$devEcoRoot = Read-Host '请输入 DevEco Studio 安装目录'
+$env:DEVECO_SDK_HOME = Join-Path $devEcoRoot 'sdk'
+&amp; (Join-Path $devEcoRoot 'tools/node/node.exe') '.\tools\run-logic-tests.mjs'</code></pre>
+      <p>随后在已就绪的模拟器或手机验证三种玩法、数量边界、完成去重、持久化、取消文件选择、非法文件、分享和跨设备导入。记录设备 API、包版本、步骤、结果和脱敏截图。API 20 缺少设备时明确留为待测。</p>
+      <p>可让 AI 执行：</p>
+      <blockquote>请自行启动当前可用的模拟器，完成基础功能测试并记录结果。能够自行处理的问题自行处理并验证；需要修改开发环境、变更需求或由我操作时，先告诉我，由我决定。不要把逻辑测试或打包成功当作设备测试通过。</blockquote>
+      <p><strong>完成标志：</strong>输出 <code>ALL 17 LOGIC TESTS PASSED</code>，构建有新产物，设备验收逐项记录通过或待测。验证结束后删除自己创建的测试任务；本案例没有需释放的云资源。</p>
+    </li>
+  </ol>
+  <h2>高频问题排查</h2>
+  <table style="border-collapse:collapse;width:100%" border="1" cellpadding="10">
+    <thead><tr><th>问题</th><th>可能原因</th><th>处理与恢复标志</th></tr></thead>
+    <tbody>
+      <tr><td>构建报 00303313</td><td>固定编译 SDK 与工具不匹配。</td><td>检查配套 SDK；环境变更先确认。重新构建成功后，再做设备回归。</td></tr>
+      <tr><td>没有 signingConfig</td><td>公开工程默认无签名。</td><td>无签名打包是预期行为；安装按设备要求使用自己的调试签名。</td></tr>
+      <tr><td>找不到 Java</td><td>构建进程未使用 IDE 配套 Java。</td><td>核对当前进程的 JAVA_HOME 与 PATH，不直接修改系统环境。</td></tr>
+      <tr><td>TXT 导入失败</td><td>正文不是约定的 JSON，或版本、长度不合法。</td><td>按示例结构核对，先看导入统计，再确认合并。</td></tr>
+      <tr><td>分享没有选择面板</td><td>系统只找到一个匹配接收入口。</td><td>在目标应用确认文件实际送达，再执行导入；仅启动不算完成。</td></tr>
+      <tr><td>自定义任务未入选</td><td>停用、玩法不匹配，或随机抽样未选中。</td><td>检查最高挑战程度和 50% 上限，重新生成并查看清单。</td></tr>
+    </tbody>
+  </table>
+  <h2>安全与交付</h2>
+  <p>任务由参与者自愿完成或跳过，避免违法、危险、泄露隐私或打扰未参与者。文件为明文，分享包含停用的自定义任务；发送前检查内容与接收对象。更换设备或清除数据前先备份并确认恢复成功。</p>
+  <p>提交前运行 <code>tools/check-public-source.mjs</code> 并检查暂存清单，不提交签名口令、证书、私钥、本机配置或构建包。源码与文档许可见仓库 <code>LICENSE</code>，素材边界见 <code>NOTICE.md</code>。完整源码导航、任务文件格式和最新核对结果见仓库 README 与 docs。</p>
+</article>

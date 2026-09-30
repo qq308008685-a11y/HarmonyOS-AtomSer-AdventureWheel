@@ -1,0 +1,137 @@
+{
+  "baseInfo": {
+    "title": "冒险大转盘：纯本地鸿蒙元服务开发",
+    "description": "从朋友聚会的真心话大冒险场景出发，学习开局任务确认、2.5D 转盘动画、同局去重、本地任务管理，以及 JSON / TXT 任务文件迁移，完成一款无需服务器的手机元服务。",
+    "coverImage": "cover.png",
+    "cardImage": "card.png",
+    "difficulty": "进阶",
+    "duration": 120,
+    "author": "鸿蒙开发实践中心",
+    "tags": ["鸿蒙元服务", "ArkTS", "ArkUI", "Canvas", "本地存储", "文件迁移"],
+    "category": "应用开发",
+    "repoUrl": "https://gitcode.com/harmony-practice-center/HarmonyOS-APP-adventure-wheel",
+    "shareImage": "share.png"
+  },
+  "introduction": {
+    "overview": "朋友线下聚会时，先选择玩法、任务数量和挑战程度，查看生成的任务清单后再开局。大家轮流点击转盘，完成或跳过当前任务后交给下一位。任务库既能查看 190 条内置内容，也能维护自己的任务。数据保存在设备本地，无账号、服务器或自动云同步；更换设备时，可通过任务文件导入迁移。案例以现有工程为起点，重点学习随机规则、视觉反馈、持久化和元服务文件能力。",
+    "highlights": [
+      {"icon": "MagicStick", "title": "转盘与结果动画", "desc": "Canvas 绘制扇区和侧壁，透视变换呈现 2.5D 效果；命中强调后，居中结果卡片动画入场。"},
+      {"icon": "CollectionTag", "title": "开局确认与同局去重", "desc": "先确认实际任务清单；交接后的扇区变灰并显示“完成”，不再参加本局抽取。"},
+      {"icon": "Box", "title": "纯本地任务库", "desc": "浏览内置任务，添加、编辑、启停和删除自定义任务；Preferences 保存本地记录。"},
+      {"icon": "Paperclip", "title": "文件带走自定义玩法", "desc": "导出 JSON 或分享包含 JSON 文本的 TXT 文件；导入前统计，确认后只合并新任务。"}
+    ],
+    "deliverables": {
+      "title": "你能做出什么",
+      "intro": "以当前工程为起点，完成以下可检查的成果：",
+      "items": [
+        "一款樱桃可乐配色、支持手机的真心话大冒险元服务",
+        "2–20 个任务的开局确认、轮流抽取和已处理任务标记",
+        "每条最多 30 个 Unicode 码点的本地自定义任务库",
+        "版本化 JSON / TXT 任务文件的导入、导出及系统文件路由",
+        "通过 17 项纯逻辑测试的工程和可生成的无签名 Release HAP"
+      ]
+    },
+    "targetAudience": "了解基础 ArkTS / ArkUI，想实践交互动画、本地数据与鸿蒙元服务文件能力的开发者。"
+  },
+  "prerequisites": {
+    "cloud": [
+      {"icon": "Key", "title": "账号要求", "desc": "若选择在线开发实践，按平台当前要求准备华为开发者联盟实名账号。元服务的离线玩法和本地存储不需要用户账号。", "status": "可选"},
+      {"icon": "Help", "title": "网络环境", "desc": "在线开发、工具下载及首次依赖同步需要可用网络。游戏玩法不依赖远程接口。", "status": "建议"},
+      {"icon": "Money", "title": "费用与资源", "desc": "本案例无需创建云函数、云数据库或付费服务器。在线开发环境的可用性、额度和费用以平台当前页面为准。", "status": "可选"},
+      {"icon": "Phone", "title": "在线设备要求", "desc": "仅当平台已提供可用的在线开发与设备运行环境时，可用电脑浏览器实践，无需本机 DevEco Studio。本发布包不包含云环境部署。", "status": "可选"}
+    ],
+    "local": [
+      {"icon": "ReadingLamp", "title": "基础与开发工具", "desc": "了解 ArkTS、ArkUI 状态管理；准备 DevEco Studio 及配套 SDK、Node.js、Java 和 Hvigor。当前配置目标 API 23、最低兼容 API 20，编译 SDK 随 IDE。", "status": "必须"},
+      {"icon": "Phone", "title": "测试设备", "desc": "准备手机模拟器或手机，设备安装按环境配置自己的调试签名。已有 API 24 模拟器记录；最低 API 20 和当前新包运行仍需验收。", "status": "必须"},
+      {"icon": "Calendar", "title": "预计时长", "desc": "环境就绪后约 15 分钟体验，约 120 分钟完成代码学习与验收；不包含工具下载、签名准备和首次环境配置。", "status": "建议"},
+      {"icon": "MagicStick", "title": "AI 编程工具", "desc": "可使用码道等 AI 工具辅助理解和迭代。环境缺失、需求变更或需要本人操作时，应先由开发者决定。", "status": "可选"}
+    ]
+  },
+  "knowledgePoints": {
+    "intro": "从可见体验追踪到实际代码，理解六项可迁移的工程能力。",
+    "list": [
+      {
+        "title": "元服务入口与页面状态",
+        "subtitle": "EntryAbility / 页面注册 / @State / 开局确认",
+        "importance": "核心",
+        "content": "<p>把启动、设置、清单确认和轮流游戏分开，避免按钮点击后直接进入不可预期的抽取。本案例中你将学到：</p><ul><li><strong>元服务入口</strong>：核对 <code>atomicService</code>、<code>installationFree</code> 与页面注册。</li><li><strong>页面分工</strong>：<code>SetupPage</code> 设置玩法，<code>TaskLibraryPage</code> 管理任务，<code>WheelPage</code> 管理轮次与结果。</li><li><strong>先确认再开局</strong>：“立即开始”生成实际清单，“确认开局”才把清单交给转盘。</li></ul><p>当前工程仅声明手机，不将其他设备效果视为已适配。</p>",
+        "transferScene": "适用于带预览确认的抽签、活动配置和轻量元服务流程。"
+      },
+      {
+        "title": "两层随机与同局去重",
+        "subtitle": "模式筛选 / 挑战程度 / 洗牌抽样 / 完成集合",
+        "importance": "核心",
+        "content": "<p>开局抽样决定转盘有哪些任务，单次命中决定本轮选谁，两者承担不同职责。本案例中你将学到：</p><ul><li><strong>条件筛选</strong>：按真心话、大冒险或混合局及最高挑战程度筛选候选。</li><li><strong>开局抽样</strong>：<code>TaskEngine</code> 使用 Fisher–Yates 洗牌，匹配的自定义任务最多占 <code>floor(任务数 × 0.5)</code>。</li><li><strong>本局完成状态</strong>：<code>WheelRoundState</code> 只从未处理索引中选取；交接后更新完成集合。</li></ul><p>完成集合不持久化，新一局可以再次出现旧任务；娱乐随机不适用于博彩或需审计的抽签。</p>",
+        "transferScene": "适用于练习题抽取、活动签条和本轮不重复的随机选择。"
+      },
+      {
+        "title": "Canvas 转盘与结果反馈",
+        "subtitle": "Canvas / 透视变换 / 减速旋转 / 居中结果",
+        "importance": "核心",
+        "content": "<p>视觉动画应表达已经决定的业务结果，而不是独立产生另一个结果。本案例中你将学到：</p><ul><li><strong>2.5D 绘制</strong>：<code>WheelCanvas</code> 绘制扇区、侧壁和文字，再使用透视旋转营造厚度感。</li><li><strong>结果与角度一致</strong>：先选择目标索引，再计算停止角度；旋转期间不接受第二次开始。</li><li><strong>分段反馈</strong>：停止后强调命中扇区，再以缩放、位移和透明度显示居中卡片；已处理扇区保留位置并变灰。</li></ul><p>这是 Canvas 配合透视变换的 2.5D 效果，不是独立 3D 引擎。</p>",
+        "transferScene": "适用于抽奖展示、随机选择和需要结果一致性的动效组件。"
+      },
+      {
+        "title": "本地任务与统一内容规则",
+        "subtitle": "Preferences / flush / Unicode 计数 / 内容去重",
+        "importance": "重要",
+        "content": "<p>无需服务器，也可以维护可编辑、可启停的任务库。本案例中你将学到：</p><ul><li><strong>持久化</strong>：<code>LocalTaskStore</code> 保存任务 JSON，<code>PreferenceStore</code> 保存游戏设置，写入后调用 <code>flush()</code>。</li><li><strong>统一字数约束</strong>：<code>TaskTextRules</code> 将 30 个 Unicode 码点的限制用于输入、保存和导入。</li><li><strong>任务边界</strong>：内置任务只读，自定义任务支持编辑；同类型同正文按忽略空白和英文大小写的规则去重。</li></ul><p>字段校验不能代替内容安全审查；参与者可以自愿跳过任务。</p>",
+        "transferScene": "适用于离线清单、用户自定义模板和轻量本地设置。"
+      },
+      {
+        "title": "可携带文件与元服务系统路由",
+        "subtitle": "版本化 JSON / TXT / 文件选择器 / Want",
+        "importance": "重要",
+        "content": "<p>文件迁移让用户自己带走数据，不必引入账号和云同步。本案例中你将学到：</p><ul><li><strong>可携带字段</strong>：<code>TaskTransferPackageBuilder</code> 只输出类型、程度、正文和启用状态，不包含本地 ID 与时间戳。</li><li><strong>导入预览</strong>：文件上限 1 MiB、任务数组上限 1000 条；先统计新增、重复和无效项，确认后合并。</li><li><strong>系统文件路由</strong>：文档选择器处理导入导出；分享生成含 JSON 文本的 TXT，通过文件 URI、只读授权和 <code>ohos.want.action.sendData</code> 启动接收入口。</li></ul><p>目标应用启动不代表文件送达。分享包含全部自定义任务，包括停用项；发送前检查私人内容。</p>",
+        "transferScene": "适用于离线配置备份、跨设备数据迁移与用户主动文件分享。"
+      },
+      {
+        "title": "逻辑测试、构建与设备验收",
+        "subtitle": "规则测试 / 无签名打包 / API 分层 / 设备回归",
+        "importance": "重要",
+        "content": "<p>把规则通过、构建成功和设备可用分别验证，才能准确判断工程状态。本案例中你将学到：</p><ul><li><strong>纯逻辑回归</strong>：运行 <code>tools/run-logic-tests.mjs</code>，检查 17 项规则。</li><li><strong>版本分工</strong>：编译 SDK 随 IDE，目标 API 23、最低兼容 API 20；编译版本不等于最低安装版本。</li><li><strong>独立设备验收</strong>：验证轮流抽取、结果动画、持久化、文件接收和再次导入，并保存设备系统与操作记录。</li></ul><p>2026-09-30 已有无签名 Release 构建成功记录；历史截图来自 2026-08-26 API 24 模拟器，当前新包及 API 20 实跑仍待补。</p>",
+        "transferScene": "适用于区分算法测试、编译验证与实际运行证据的案例交付。"
+      }
+    ]
+  },
+  "practice": {"content": "practice.html"},
+  "architecture": {
+    "archImage": "arch-diagram.svg",
+    "description": "<p>工程按页面、可视组件、随机规则、本地存储和文件服务分工，无云后端。SetupPage 先调用 TaskEngine 生成并确认清单，WheelPage / WheelRoundState 管理本局完成集合，WheelCanvas 表达抽取结果。TaskLibraryPage 通过 LocalTaskStore 维护本地任务，通过 TaskTransferService 完成文件选择与系统路由；TaskTextRules、TaskTransferValidator 和 TaskTransferPackageBuilder 统一校验与可携带结构。</p><p>游戏路径：设置 → 清单确认 → 转盘命中 → 结果卡片 → 交接与完成标记。数据路径：自定义任务 ↔ Preferences；自定义任务 ↔ JSON / TXT 文件 ↔ 用户选择的接收应用。文件迁移由用户主动触发，不是自动同步。</p>"
+  },
+  "preview": {
+    "intro": "手机全流程预览：选择玩法、轮流抽取、管理任务。使用 2026-08-26 API 24 模拟器真实截图横向合成，保留完整画面；不是当前新包的设备验收。",
+    "devices": [
+      {"deviceType": "phone", "deviceName": "手机", "previewImage": "preview-phone.png", "description": "首页设置、带灰色完成标记的 2.5D 转盘，以及本地自定义任务库。当前工程仅声明手机。"}
+    ]
+  },
+  "faqs": {
+    "intro": "按当前实现排查，不把历史截图或系统路由启动当作完整通过。",
+    "list": [
+      {"title": "构建 SDK 不匹配", "question": "遇到 00303313 时如何处理？", "reason": "手动固定的编译 SDK 可能与当前 DevEco Studio / Hvigor 不匹配。", "solution": "先核对工具与配套 SDK，当前工程不固定 compileSdkVersion，保留目标 API 23、最低兼容 API 20。需要安装或切换环境时先由开发者决定；重新构建后再做设备回归。"},
+      {"title": "没有签名配置", "question": "No signingConfig found 是否表示构建失败？", "reason": "公开工程默认使用空签名配置，生成无签名 HAP。", "solution": "以 BUILD SUCCESSFUL 与新产物为准。安装运行按设备要求配置自己的调试签名，不提交证书、口令或本机配置。"},
+      {"title": "同局任务重复", "question": "同一个转盘里会再次抽到刚处理的任务吗？", "reason": "完成集合在交给下一位或完成本局时更新，不是在卡片出现时更新。", "solution": "交接后检查扇区变灰、显示完成且剩余数减少；该任务不再参加本局抽取。新开一局可能重复，这不是跨局去重。"},
+      {"title": "自己的任务未入选", "question": "新增任务为什么没有出现在清单里？", "reason": "任务可能停用、类型或挑战程度不匹配，也可能未在本次随机抽样中入选。", "solution": "核对启用状态和玩法设置；匹配的自定义任务最多占 floor(任务数 × 0.5)。重新生成并检查实际清单，不保证每局都包含指定自定义任务。"},
+      {"title": "TXT 导入失败", "question": "普通文本列表能作为任务 TXT 导入吗？", "reason": "TXT 是文件扩展名，正文仍必须是约定的版本化 JSON 文本。", "solution": "使用任务文件格式说明中的 format、version 和 tasks 结构；每条正文不超过 30 个 Unicode 码点，文件不超过 1 MiB。导入前查看统计并确认。"},
+      {"title": "分享直接打开一个应用", "question": "为什么没有出现应用选择面板？", "reason": "设备可能只安装了一个匹配 text/plain 的接收应用，系统决定路由表现。", "solution": "在接收应用检查实际取得的 TXT，再在目标设备导入。没有匹配入口时用导出文件作为替代路径；只打开应用不能判定传输成功。"},
+      {"title": "换设备后没有任务", "question": "自定义任务会自动同步到新设备吗？", "reason": "元服务没有账号和云后端，任务只保存在本地。", "solution": "清除数据或更换设备前导出备份，在新设备导入并检查正文、类型、程度及启用状态；确认恢复成功后再处理旧数据。"}
+    ]
+  },
+  "scenarios": {
+    "intro": "以下是迁移方向，不是当前元服务已提供的附加功能。",
+    "migrationPoints": ["筛选与随机抽样", "本局完成状态", "本地模板库", "版本化文件迁移"],
+    "list": [
+      {"icon": "Present", "title": "聚会互动与活动抽签", "desc": "把任务替换为自愿参加的互动题或活动签条，保留先确认再抽取的流程。", "skills": ["Canvas", "状态管理", "随机抽样"], "migrationPoints": ["复用未处理索引选择", "调整任务内容与结果卡片"]},
+      {"icon": "ReadingLamp", "title": "学习练习卡", "desc": "把任务库换成练习题，在本轮完成后排除该题，通过文件交换自定义题组。", "skills": ["Preferences", "JSON", "规则测试"], "migrationPoints": ["复用本地内容管理", "调整分类与完成规则"]},
+      {"icon": "Box", "title": "离线自定义模板", "desc": "用同样的导入预览与只合并新条目策略，维护轻量活动或清单模板。", "skills": ["文件选择器", "数据校验", "本地持久化"], "migrationPoints": ["复用文件版本标识", "按领域重写校验与去重规则"]}
+    ]
+  },
+  "challenges": {
+    "intro": "完成基础验收后再尝试，以下项目尚未实现或尚未完成验证。",
+    "list": [
+      {"title": "补齐最低版本与大字体回归", "difficulty": "简单", "kpTag": "兼容验收", "desc": "在 API 20 设备验证基础流程，并检查大字体、小屏下的结果卡片和任务列表。", "hint": "记录设备版本、步骤与截图；缺少镜像或设备时先确认环境方案，不用高版本截图代替。"},
+      {"title": "任务文件跨设备往返", "difficulty": "中等", "kpTag": "文件迁移", "desc": "从设备 A 分享 TXT，设备 B 实际接收并导入，核对四个可携带字段和重复项处理。", "hint": "同时验证接收应用、文件正文与导入结果，不以 startAbility 成功作为送达证据。"},
+      {"title": "扩展多窗口或折叠屏布局", "difficulty": "困难", "kpTag": "ArkUI", "desc": "在保持当前手机流程的基础上，设计并验证新的窗口宽度与设备形态。", "hint": "先明确布局与验收范围，完成运行验证后再扩大 deviceTypes 声明和发布预览。"}
+    ]
+  }
+}

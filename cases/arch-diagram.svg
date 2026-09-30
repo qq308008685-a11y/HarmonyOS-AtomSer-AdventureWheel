@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2080" height="820" viewBox="0 0 2080 820" font-family="Microsoft YaHei, Noto Sans SC, sans-serif">
+  <title>冒险大转盘：页面、规则、本地数据与文件迁移</title>
+  <desc>无云后端。页面分别调用随机引擎、Canvas 组件、本地存储和文件服务；自定义任务可通过文件由用户主动迁移。</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fff9ef"/><stop offset="1" stop-color="#f6e9e7"/></linearGradient>
+    <linearGradient id="cherry"><stop stop-color="#9e2949"/><stop offset="1" stop-color="#bd3b56"/></linearGradient>
+    <linearGradient id="cola"><stop stop-color="#361621"/><stop offset="1" stop-color="#623342"/></linearGradient>
+    <linearGradient id="teal"><stop stop-color="#376774"/><stop offset="1" stop-color="#548895"/></linearGradient>
+  </defs>
+  <rect width="2080" height="820" fill="url(#bg)"/>
+  <text x="60" y="72" font-size="38" font-weight="bold" fill="#361621">冒险大转盘 · 纯本地架构</text>
+  <text x="2020" y="68" font-size="25" text-anchor="end" fill="#7a5861">ArkTS / ArkUI · 目标 API 23 · 最低 API 20</text>
+  <g font-size="26" fill="#fff7e6">
+    <rect x="60" y="122" width="1360" height="92" rx="18" fill="url(#cola)"/>
+    <text x="94" y="178" font-weight="bold">页面流程</text><text x="325" y="178">SetupPage → 确认清单 → WheelPage · TaskLibraryPage</text>
+    <path d="M724 218h32l-16 18Z" fill="#b7989f"/>
+    <rect x="60" y="240" width="1360" height="92" rx="18" fill="url(#cherry)"/>
+    <text x="94" y="296" font-weight="bold">交互组件</text><text x="325" y="296">WheelCanvas · 数量与玩法组件 · 命中反馈与结果卡片</text>
+    <path d="M724 336h32l-16 18Z" fill="#b7989f"/>
+    <rect x="60" y="358" width="1360" height="92" rx="18" fill="url(#cherry)"/>
+    <text x="94" y="414" font-weight="bold">业务规则</text><text x="325" y="414">TaskEngine 抽样 · WheelRoundState 本局未处理索引</text>
+    <path d="M724 454h32l-16 18Z" fill="#b7989f"/>
+    <rect x="60" y="476" width="1360" height="92" rx="18" fill="url(#teal)"/>
+    <text x="94" y="532" font-weight="bold">数据与文件</text><text x="325" y="532">LocalTaskStore · PreferenceStore · TaskTransferService</text>
+    <path d="M724 572h32l-16 18Z" fill="#b7989f"/>
+    <rect x="60" y="594" width="1360" height="92" rx="18" fill="url(#teal)"/>
+    <text x="94" y="650" font-weight="bold">公共约束</text><text x="325" y="650">TaskTextRules · Validator / PackageBuilder · 任务模型</text>
+  </g>
+  <rect x="1460" y="122" width="560" height="564" rx="22" fill="#fffcf6" stroke="#e6cecf"/>
+  <text x="1500" y="178" font-size="29" font-weight="bold" fill="#361621">两条数据路径</text>
+  <g font-size="25" fill="#62424c">
+    <text x="1500" y="246">游戏：设置 → 清单 → 转盘</text>
+    <text x="1500" y="292">结果 → 交接 → 完成标记</text>
+    <line x1="1500" y1="330" x2="1980" y2="330" stroke="#e6cecf"/>
+    <text x="1500" y="386">自定义任务 ↔ Preferences</text>
+    <text x="1500" y="432">自定义任务 ↔ JSON / TXT</text>
+    <text x="1500" y="478">文件 URI → 系统接收入口</text>
+    <text x="1500" y="546" font-size="22">无服务器 · 无自动云同步</text>
+    <text x="1500" y="592" font-size="22">接收成功需检查目标应用与文件</text>
+  </g>
+  <text x="60" y="754" font-size="24" fill="#7a5861">本局完成集合仅在内存中；持久化保存自定义任务与游戏设置。图示表示模块职责，不代表所有模块的直接调用关系。</text>
+</svg>

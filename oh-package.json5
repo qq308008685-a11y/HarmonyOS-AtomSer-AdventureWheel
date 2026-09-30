@@ -1,0 +1,8 @@
+{
+  "modelVersion": "6.1.1",
+  "description": "HarmonyOS ArkTS app.",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>冒险大转盘 · 发布物预览</title>
+  <style>
+    :root{color-scheme:light;--ink:#361621;--muted:#80616b;--red:#b92d49;--paper:#fffaf1;--line:#ead7d5}
+    *{box-sizing:border-box}body{margin:0;background:#f6eae6;color:var(--ink);font:16px/1.7 "Microsoft YaHei",sans-serif}
+    header{background:#251017;color:#fff7e6;padding:32px max(24px,4vw)}header p{margin:4px 0;color:#dfb6b9}h1{font-size:clamp(26px,3vw,42px);margin:0}
+    main{width:92%;max-width:2000px;margin:28px auto}nav{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+    a{color:var(--red);text-underline-offset:3px}nav a{background:var(--paper);border:1px solid var(--line);padding:8px 18px;border-radius:24px;text-decoration:none}
+    .notice{padding:14px 20px;margin:0 0 26px;border-left:4px solid var(--red);background:var(--paper)}
+    figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden}figure img{width:100%;height:auto;display:block}figcaption{padding:13px 20px;color:var(--muted);font-size:14px}
+    h2{font-size:23px;margin:28px 0 12px}.grid{display:grid;grid-template-columns:1.65fr 1fr;gap:22px;align-items:start}.grid h2{margin-top:0}.block{margin:26px 0}footer{margin:28px 0;color:var(--muted);font-size:14px}
+    @media(max-width:760px){main{width:94%}.grid{grid-template-columns:1fr}header{padding:24px 18px}figcaption{padding:12px}nav{gap:8px}nav a{padding:6px 13px}}
+  </style>
+</head>
+<body>
+  <header><p>鸿蒙开发实践中心 · 元服务案例</p><h1>冒险大转盘 · 发布物预览</h1><p>转出下一份聚会惊喜</p></header>
+  <main>
+    <nav aria-label="发布物文件"><a href="../cases/case.json">案例信息</a><a href="../cases/practice.html">实践教程</a><a href="案例导入说明.md">导入说明</a><a href="../README.md">项目 README</a></nav>
+    <p class="notice">发布物对应<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-APP-adventure-wheel">冒险大转盘源码仓库</a>。此页用于检查素材，不代表已导入平台、已完成设备验收或已上架。</p>
+    <section><h2>横版封面</h2><figure><img src="../cases/cover.png" width="2080" height="960" alt="樱桃可乐配色的冒险大转盘封面，右侧为真实转盘截图"><figcaption>cover.png · 2080×960 · 标题、文案和真实手机效果已合成在图内。</figcaption></figure></section>
+    <section class="grid block">
+      <div><h2>列表卡片</h2><figure><img src="../cases/card.png" width="1920" height="974" alt="冒险大转盘毛玻璃卡片，展示难度、预计时长和知识点数"><figcaption>card.png · 1920×974 · 渐变底、毛玻璃卡片与胶囊数据栏。</figcaption></figure></div>
+      <div><h2>分享缩略图</h2><figure><img src="../cases/share.png" width="1200" height="1200" alt="冒险大转盘正方形社交分享图"><figcaption>share.png · 1200×1200 · 标题与技术标签。</figcaption></figure></div>
+    </section>
+    <section><h2>手机全流程</h2><figure><img src="../cases/preview-phone.png" width="2080" height="1100" alt="选择玩法、轮流抽取和管理任务的完整手机截图"><figcaption>preview-phone.png · 2080×1100 · 2026-08-26 API 24 模拟器实拍横向合成，非本次新包设备验收。</figcaption></figure></section>
+    <section><h2>技术架构</h2><figure><img src="../cases/arch-diagram.svg" width="2080" height="820" alt="页面、交互组件、业务规则、本地数据与文件服务分工，无云后端"><figcaption>arch-diagram.svg · 2080×820 · 本地任务、单局状态与用户主动文件迁移。</figcaption></figure></section>
+    <footer>当前仅提供手机预览，不虚构其他设备适配。素材许可见 NOTICE.md；规则测试与构建通过不代替实际设备验收。</footer>
+  </main>
+</body>
+</html>
