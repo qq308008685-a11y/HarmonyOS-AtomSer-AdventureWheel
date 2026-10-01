@@ -1,0 +1,1891 @@
+{
+  "format": "adventure-wheel-built-in-reference",
+  "version": "1.0",
+  "language": "zh-CN",
+  "tasks": [
+    {
+      "id": "truth-001",
+      "type": "truth",
+      "level": "light",
+      "text": "说一件你做过最尴尬的事",
+      "tags": [
+        "回忆",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "truth-002",
+      "type": "truth",
+      "level": "light",
+      "text": "你最想拥有什么超能力？为什么？",
+      "tags": [
+        "幻想",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-003",
+      "type": "truth",
+      "level": "light",
+      "text": "如果你可以变成一种动物，你想变成什么？",
+      "tags": [
+        "幻想",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-004",
+      "type": "truth",
+      "level": "light",
+      "text": "你最喜欢的食物是什么？最讨厌的呢？",
+      "tags": [
+        "日常生活"
+      ]
+    },
+    {
+      "id": "truth-005",
+      "type": "truth",
+      "level": "light",
+      "text": "如果你中了五百万，第一件事做什么？",
+      "tags": [
+        "幻想",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-006",
+      "type": "truth",
+      "level": "light",
+      "text": "你最擅长的一道菜是什么？",
+      "tags": [
+        "日常生活"
+      ]
+    },
+    {
+      "id": "truth-007",
+      "type": "truth",
+      "level": "light",
+      "text": "如果可以穿越到任何时代，你想去哪里？",
+      "tags": [
+        "幻想",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-008",
+      "type": "truth",
+      "level": "light",
+      "text": "你手机里最常用的三个 App 是什么？",
+      "tags": [
+        "日常生活"
+      ]
+    },
+    {
+      "id": "truth-009",
+      "type": "truth",
+      "level": "light",
+      "text": "你最近单曲循环的一首歌是什么？",
+      "tags": [
+        "音乐",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-010",
+      "type": "truth",
+      "level": "light",
+      "text": "如果你能学会任意一门技能（瞬间掌握），选什么？",
+      "tags": [
+        "幻想",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-011",
+      "type": "truth",
+      "level": "light",
+      "text": "你最想去旅行的国家或城市是哪里？",
+      "tags": [
+        "旅行",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-012",
+      "type": "truth",
+      "level": "light",
+      "text": "你追过最久的一部剧/动漫是什么？",
+      "tags": [
+        "娱乐",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-013",
+      "type": "truth",
+      "level": "light",
+      "text": "你小时候的理想职业是什么？",
+      "tags": [
+        "回忆",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-014",
+      "type": "truth",
+      "level": "light",
+      "text": "说一个你最近学会的新技能",
+      "tags": [
+        "日常生活"
+      ]
+    },
+    {
+      "id": "truth-015",
+      "type": "truth",
+      "level": "light",
+      "text": "如果你有一天完全属于自己的时间，会做什么？",
+      "tags": [
+        "幻想",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-016",
+      "type": "truth",
+      "level": "light",
+      "text": "在场的谁你最想和他/她交换一天人生？",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-017",
+      "type": "truth",
+      "level": "light",
+      "text": "你最近看过最好看的一部电影是什么？",
+      "tags": [
+        "娱乐",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-018",
+      "type": "truth",
+      "level": "light",
+      "text": "如果你能删除一种食物让它从地球上消失，选什么？",
+      "tags": [
+        "幻想",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "truth-019",
+      "type": "truth",
+      "level": "light",
+      "text": "你最喜欢的季节是哪个？为什么？",
+      "tags": [
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-020",
+      "type": "truth",
+      "level": "light",
+      "text": "你会选择猫还是狗？为什么？",
+      "tags": [
+        "轻松",
+        "宠物"
+      ]
+    },
+    {
+      "id": "truth-021",
+      "type": "truth",
+      "level": "light",
+      "text": "说三个你觉得最能代表自己的词",
+      "tags": [
+        "自我认知",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-022",
+      "type": "truth",
+      "level": "light",
+      "text": "你最近买的最满意的一件东西是什么？",
+      "tags": [
+        "日常生活"
+      ]
+    },
+    {
+      "id": "truth-023",
+      "type": "truth",
+      "level": "light",
+      "text": "如果你可以给十年前的自己打一个电话，会说什么？",
+      "tags": [
+        "回忆",
+        "感悟"
+      ]
+    },
+    {
+      "id": "truth-024",
+      "type": "truth",
+      "level": "light",
+      "text": "你最早学会的一句外语是什么？",
+      "tags": [
+        "回忆",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-025",
+      "type": "truth",
+      "level": "light",
+      "text": "你最喜欢的运动是什么？",
+      "tags": [
+        "运动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-026",
+      "type": "truth",
+      "level": "light",
+      "text": "在场上任选一个人，说他/她的三个优点",
+      "tags": [
+        "互动",
+        "暖心"
+      ]
+    },
+    {
+      "id": "truth-027",
+      "type": "truth",
+      "level": "light",
+      "text": "你做过最勇敢的一件事是什么？",
+      "tags": [
+        "回忆"
+      ]
+    },
+    {
+      "id": "truth-028",
+      "type": "truth",
+      "level": "light",
+      "text": "你最想改掉的一个习惯是什么？",
+      "tags": [
+        "自我认知"
+      ]
+    },
+    {
+      "id": "truth-029",
+      "type": "truth",
+      "level": "light",
+      "text": "如果你能拥有一种才艺，最想拥有什么？",
+      "tags": [
+        "幻想",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-030",
+      "type": "truth",
+      "level": "light",
+      "text": "你最近听的最多的一类播客/音频是什么？",
+      "tags": [
+        "娱乐",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-031",
+      "type": "truth",
+      "level": "light",
+      "text": "你觉得自己是内向还是外向的人？",
+      "tags": [
+        "自我认知",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-032",
+      "type": "truth",
+      "level": "light",
+      "text": "在场上找一个和你最不像的人，说说你们的差异",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-033",
+      "type": "truth",
+      "level": "light",
+      "text": "你手机相册里最新一张照片是什么？",
+      "tags": [
+        "日常生活"
+      ]
+    },
+    {
+      "id": "truth-034",
+      "type": "truth",
+      "level": "light",
+      "text": "你小时候最喜欢的一部动画片是什么？",
+      "tags": [
+        "回忆",
+        "轻松"
+      ]
+    },
+    {
+      "id": "truth-035",
+      "type": "truth",
+      "level": "light",
+      "text": "如果可以任意选择一座城市定居，你选哪里？",
+      "tags": [
+        "旅行",
+        "幻想"
+      ]
+    },
+    {
+      "id": "truth-036",
+      "type": "truth",
+      "level": "medium",
+      "text": "说一件你后悔但已经无法挽回的事",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-037",
+      "type": "truth",
+      "level": "medium",
+      "text": "你最怕失去什么？",
+      "tags": [
+        "走心",
+        "感悟"
+      ]
+    },
+    {
+      "id": "truth-038",
+      "type": "truth",
+      "level": "medium",
+      "text": "有没有一个人，你曾经很喜欢但错过了？",
+      "tags": [
+        "情感",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-039",
+      "type": "truth",
+      "level": "medium",
+      "text": "你觉得自己最大的缺点是什么？",
+      "tags": [
+        "自我认知",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-040",
+      "type": "truth",
+      "level": "medium",
+      "text": "上一次哭是因为什么？",
+      "tags": [
+        "情感",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-041",
+      "type": "truth",
+      "level": "medium",
+      "text": "你有没有对在座的某个人隐瞒了什么事？",
+      "tags": [
+        "互动",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-042",
+      "type": "truth",
+      "level": "medium",
+      "text": "你做过最对不起别人的事是什么？",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-043",
+      "type": "truth",
+      "level": "medium",
+      "text": "如果你能改变自己过去的一个决定，会改变什么？",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-044",
+      "type": "truth",
+      "level": "medium",
+      "text": "有没有一本书或一部电影改变了你的观念？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-045",
+      "type": "truth",
+      "level": "medium",
+      "text": "你最后悔没有学的一项技能是什么？",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-046",
+      "type": "truth",
+      "level": "medium",
+      "text": "在朋友眼中，你最被误解的一点是什么？",
+      "tags": [
+        "自我认知",
+        "互动"
+      ]
+    },
+    {
+      "id": "truth-047",
+      "type": "truth",
+      "level": "medium",
+      "text": "你曾经为了什么事情失眠过？",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-048",
+      "type": "truth",
+      "level": "medium",
+      "text": "你对成功的定义是什么？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-049",
+      "type": "truth",
+      "level": "medium",
+      "text": "你觉得自己最幸运的一件事是什么？",
+      "tags": [
+        "回忆",
+        "暖心"
+      ]
+    },
+    {
+      "id": "truth-050",
+      "type": "truth",
+      "level": "medium",
+      "text": "说一个你一直想做但还没做的事",
+      "tags": [
+        "自我认知",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-051",
+      "type": "truth",
+      "level": "medium",
+      "text": "你如何看待金钱和幸福的关系？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-052",
+      "type": "truth",
+      "level": "medium",
+      "text": "你最近一次对谁说谎了？说了什么谎？",
+      "tags": [
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-053",
+      "type": "truth",
+      "level": "medium",
+      "text": "如果能和已故的某个人聊 5 分钟，你会选谁？",
+      "tags": [
+        "情感",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-054",
+      "type": "truth",
+      "level": "medium",
+      "text": "有没有哪句话，改变了你的人生轨迹？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-055",
+      "type": "truth",
+      "level": "medium",
+      "text": "你觉得友情中最重要的是什么？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-056",
+      "type": "truth",
+      "level": "medium",
+      "text": "你曾经被谁伤过心？",
+      "tags": [
+        "情感",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-057",
+      "type": "truth",
+      "level": "medium",
+      "text": "你有没有一度想要放弃的事情，但坚持下来了？",
+      "tags": [
+        "鼓励",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-058",
+      "type": "truth",
+      "level": "medium",
+      "text": "你对自己的父母有什么想说的话？",
+      "tags": [
+        "情感",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-059",
+      "type": "truth",
+      "level": "medium",
+      "text": "你认为朋友之间应该有秘密吗？",
+      "tags": [
+        "感悟",
+        "互动"
+      ]
+    },
+    {
+      "id": "truth-060",
+      "type": "truth",
+      "level": "medium",
+      "text": "你羡慕过别人的什么？",
+      "tags": [
+        "自我认知",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-061",
+      "type": "truth",
+      "level": "medium",
+      "text": "说一件你偷偷做过但不为人知的好事",
+      "tags": [
+        "暖心"
+      ]
+    },
+    {
+      "id": "truth-062",
+      "type": "truth",
+      "level": "medium",
+      "text": "你曾经因为什么而改变了对一个人的看法？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-063",
+      "type": "truth",
+      "level": "medium",
+      "text": "你觉得人生中最重要的是什么？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-064",
+      "type": "truth",
+      "level": "medium",
+      "text": "你最不能忍受朋友的哪种行为？",
+      "tags": [
+        "互动",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-065",
+      "type": "truth",
+      "level": "medium",
+      "text": "说一段你最珍贵的友谊故事",
+      "tags": [
+        "回忆",
+        "暖心"
+      ]
+    },
+    {
+      "id": "truth-066",
+      "type": "truth",
+      "level": "medium",
+      "text": "你对爱情的理解是什么？",
+      "tags": [
+        "情感",
+        "感悟"
+      ]
+    },
+    {
+      "id": "truth-067",
+      "type": "truth",
+      "level": "medium",
+      "text": "你觉得现在的自己，和五年前比最大的变化是什么？",
+      "tags": [
+        "自我认知",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-068",
+      "type": "truth",
+      "level": "medium",
+      "text": "你最感恩的一件事是什么？",
+      "tags": [
+        "暖心",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-069",
+      "type": "truth",
+      "level": "medium",
+      "text": "你曾经有没有因为胆小而错过什么机会？",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-070",
+      "type": "truth",
+      "level": "medium",
+      "text": "说一个你从未对人说过的梦想",
+      "tags": [
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-071",
+      "type": "truth",
+      "level": "medium",
+      "text": "你觉得信任一个人需要多久？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-072",
+      "type": "truth",
+      "level": "medium",
+      "text": "你最近一次对别人说\"对不起\"是什么时候？",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-073",
+      "type": "truth",
+      "level": "medium",
+      "text": "如果可以穿越到未来看一眼，你想看什么？",
+      "tags": [
+        "幻想",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-074",
+      "type": "truth",
+      "level": "medium",
+      "text": "你相信缘分吗？为什么？",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-075",
+      "type": "truth",
+      "level": "medium",
+      "text": "说一件你觉得\"如果当时……就好了\"的事情",
+      "tags": [
+        "回忆",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-076",
+      "type": "truth",
+      "level": "deep",
+      "text": "你有没有欺骗过你在乎的人？",
+      "tags": [
+        "走心",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-077",
+      "type": "truth",
+      "level": "deep",
+      "text": "你最不想被问到的三个问题是什么？",
+      "tags": [
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-078",
+      "type": "truth",
+      "level": "deep",
+      "text": "你觉得自己有没有变成小时候不喜欢的那种人？",
+      "tags": [
+        "自我认知",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-079",
+      "type": "truth",
+      "level": "deep",
+      "text": "你最害怕面对的是什么？",
+      "tags": [
+        "探索",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-080",
+      "type": "truth",
+      "level": "deep",
+      "text": "有没有一个人，你这辈子都不想再见？为什么？",
+      "tags": [
+        "情感",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-081",
+      "type": "truth",
+      "level": "deep",
+      "text": "你觉得自己最失败的经历是什么？",
+      "tags": [
+        "自我认知",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-082",
+      "type": "truth",
+      "level": "deep",
+      "text": "如果生命只剩最后一个月，你会怎么过？",
+      "tags": [
+        "探索",
+        "走心"
+      ]
+    },
+    {
+      "id": "truth-083",
+      "type": "truth",
+      "level": "deep",
+      "text": "你有没有在心里默默嫉妒过在座的某个人？",
+      "tags": [
+        "互动",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-084",
+      "type": "truth",
+      "level": "deep",
+      "text": "你觉得自己身上最难以启齿的秘密是什么？",
+      "tags": [
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-085",
+      "type": "truth",
+      "level": "deep",
+      "text": "你在什么时候感到最孤独？",
+      "tags": [
+        "情感",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-086",
+      "type": "truth",
+      "level": "deep",
+      "text": "如果能把记忆中的一段完全删掉，你选哪一段？",
+      "tags": [
+        "回忆",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-087",
+      "type": "truth",
+      "level": "deep",
+      "text": "你对死亡的看法是什么？",
+      "tags": [
+        "感悟",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-088",
+      "type": "truth",
+      "level": "deep",
+      "text": "你有没有觉得自己配不上某些东西或某个人？",
+      "tags": [
+        "自我认知",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-089",
+      "type": "truth",
+      "level": "deep",
+      "text": "你内心最深处的恐惧是什么？",
+      "tags": [
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-090",
+      "type": "truth",
+      "level": "deep",
+      "text": "如果可以不打后果地做一件事，你会做什么？",
+      "tags": [
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-091",
+      "type": "truth",
+      "level": "deep",
+      "text": "你对\"命运\"这个词有什么看法？",
+      "tags": [
+        "感悟",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-092",
+      "type": "truth",
+      "level": "deep",
+      "text": "你有没有在心里原谅过不可原谅的人？",
+      "tags": [
+        "情感",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-093",
+      "type": "truth",
+      "level": "deep",
+      "text": "如果明天世界末日，今天最后一顿饭你想和谁吃？",
+      "tags": [
+        "情感",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-094",
+      "type": "truth",
+      "level": "deep",
+      "text": "你觉得自己最不能失去的人是谁？",
+      "tags": [
+        "情感",
+        "探索"
+      ]
+    },
+    {
+      "id": "truth-095",
+      "type": "truth",
+      "level": "deep",
+      "text": "你对自己的评价是什么？请说三个缺点和三个优点",
+      "tags": [
+        "自我认知",
+        "探索"
+      ]
+    },
+    {
+      "id": "dare-001",
+      "type": "dare",
+      "level": "light",
+      "text": "模仿一位在场朋友说话1分钟",
+      "tags": [
+        "模仿",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-002",
+      "type": "dare",
+      "level": "light",
+      "text": "用左手写出你的名字",
+      "tags": [
+        "动作",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-003",
+      "type": "dare",
+      "level": "light",
+      "text": "对在座的每个人都说一句赞美的话",
+      "tags": [
+        "互动",
+        "暖心"
+      ]
+    },
+    {
+      "id": "dare-004",
+      "type": "dare",
+      "level": "light",
+      "text": "用三种不同的语调说\"我好开心\"",
+      "tags": [
+        "搞笑",
+        "表演"
+      ]
+    },
+    {
+      "id": "dare-005",
+      "type": "dare",
+      "level": "light",
+      "text": "双手在空中画一个大圆，再比出胜利手势",
+      "tags": [
+        "动作",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-006",
+      "type": "dare",
+      "level": "light",
+      "text": "模仿一个小动物的叫声和动作",
+      "tags": [
+        "模仿",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-007",
+      "type": "dare",
+      "level": "light",
+      "text": "闭眼默写在场一个人的全名",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-008",
+      "type": "dare",
+      "level": "light",
+      "text": "邀请一位在场朋友，双方同意后击掌并互相夸一句",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-009",
+      "type": "dare",
+      "level": "light",
+      "text": "用夸张的表情说一段绕口令",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-010",
+      "type": "dare",
+      "level": "light",
+      "text": "跟着大家拍手打出一段四拍节奏",
+      "tags": [
+        "运动",
+        "动作"
+      ]
+    },
+    {
+      "id": "dare-011",
+      "type": "dare",
+      "level": "light",
+      "text": "模仿服务员介绍一道“空气菜”，让在场人点评",
+      "tags": [
+        "社交",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-012",
+      "type": "dare",
+      "level": "light",
+      "text": "用不常用的手画一颗星，让大家打分",
+      "tags": [
+        "动作",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-013",
+      "type": "dare",
+      "level": "light",
+      "text": "现场编一首三句打油诗，主题是在场某个人",
+      "tags": [
+        "创意",
+        "互动"
+      ]
+    },
+    {
+      "id": "dare-014",
+      "type": "dare",
+      "level": "light",
+      "text": "选一位在场朋友，说出你最欣赏对方的一点",
+      "tags": [
+        "社交",
+        "暖心"
+      ]
+    },
+    {
+      "id": "dare-015",
+      "type": "dare",
+      "level": "light",
+      "text": "在不说话的情况下，用肢体语言讲一个故事让其他人猜",
+      "tags": [
+        "表演",
+        "互动"
+      ]
+    },
+    {
+      "id": "dare-016",
+      "type": "dare",
+      "level": "light",
+      "text": "连续说三个\"我错了\"，最后一个带哭腔",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-017",
+      "type": "dare",
+      "level": "light",
+      "text": "拿起一个物品，即兴为它做一个 30 秒的推销广告",
+      "tags": [
+        "表演",
+        "创意"
+      ]
+    },
+    {
+      "id": "dare-018",
+      "type": "dare",
+      "level": "light",
+      "text": "用一个词概括在场的每个人",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-019",
+      "type": "dare",
+      "level": "light",
+      "text": "摆一个自认为最丑的表情，保持10秒",
+      "tags": [
+        "搞笑",
+        "表演"
+      ]
+    },
+    {
+      "id": "dare-020",
+      "type": "dare",
+      "level": "light",
+      "text": "迅速说出三个在场人的生日月份",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-021",
+      "type": "dare",
+      "level": "light",
+      "text": "用假声唱一首儿歌的副歌",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-022",
+      "type": "dare",
+      "level": "light",
+      "text": "保持面无表情，让其他人想办法逗你笑",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-023",
+      "type": "dare",
+      "level": "light",
+      "text": "把手机壁纸换成纯色，直到本轮结束",
+      "tags": [
+        "动作",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-024",
+      "type": "dare",
+      "level": "light",
+      "text": "连续快速说出在场每个人的名字",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-025",
+      "type": "dare",
+      "level": "light",
+      "text": "双手比出相框，请大家在框内摆一个造型",
+      "tags": [
+        "动作",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-026",
+      "type": "dare",
+      "level": "light",
+      "text": "闭眼用手指在桌面画一个图案，让大家猜",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-027",
+      "type": "dare",
+      "level": "light",
+      "text": "背对大家，用动作表演一个职业让大家猜",
+      "tags": [
+        "动作",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-028",
+      "type": "dare",
+      "level": "light",
+      "text": "把\"哈哈哈哈\"说得越来越大声",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-029",
+      "type": "dare",
+      "level": "light",
+      "text": "在10秒内说出5个中国的省份",
+      "tags": [
+        "反应",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-030",
+      "type": "dare",
+      "level": "light",
+      "text": "把鞋带解开再绑上，用最快的速度",
+      "tags": [
+        "动作",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-031",
+      "type": "dare",
+      "level": "light",
+      "text": "给自己起一个搞笑的外号，并让所有人这轮用这个叫你",
+      "tags": [
+        "搞笑",
+        "互动"
+      ]
+    },
+    {
+      "id": "dare-032",
+      "type": "dare",
+      "level": "light",
+      "text": "保持一个夸张定格姿势30秒，同时回答一个问题",
+      "tags": [
+        "动作",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-033",
+      "type": "dare",
+      "level": "light",
+      "text": "用你最不标准的方言，念一段天气预报",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-034",
+      "type": "dare",
+      "level": "light",
+      "text": "模仿三种手机铃声，让在场人猜是什么场景",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-035",
+      "type": "dare",
+      "level": "light",
+      "text": "让左边的人给你出题，你来即兴演讲1分钟",
+      "tags": [
+        "互动",
+        "表演"
+      ]
+    },
+    {
+      "id": "dare-036",
+      "type": "dare",
+      "level": "medium",
+      "text": "对右边的朋友说一句你平时不好意思说的感谢",
+      "tags": [
+        "社交",
+        "走心"
+      ]
+    },
+    {
+      "id": "dare-037",
+      "type": "dare",
+      "level": "medium",
+      "text": "看着一位在场朋友，真诚说一句感谢",
+      "tags": [
+        "情感",
+        "走心"
+      ]
+    },
+    {
+      "id": "dare-038",
+      "type": "dare",
+      "level": "medium",
+      "text": "做一个你最不擅长的才艺展示",
+      "tags": [
+        "表演",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-039",
+      "type": "dare",
+      "level": "medium",
+      "text": "选一个在场的人，和他/她对视30秒不笑",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-040",
+      "type": "dare",
+      "level": "medium",
+      "text": "在接下来的10分钟内，每句话结尾加\"呢\"",
+      "tags": [
+        "挑战",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-041",
+      "type": "dare",
+      "level": "medium",
+      "text": "给别人唱一首完整的歌，跑调也要唱完",
+      "tags": [
+        "表演",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-042",
+      "type": "dare",
+      "level": "medium",
+      "text": "展示一张你愿意分享的照片，并讲讲它的故事",
+      "tags": [
+        "互动",
+        "信任"
+      ]
+    },
+    {
+      "id": "dare-043",
+      "type": "dare",
+      "level": "medium",
+      "text": "把笔当麦克风做15秒天气播报",
+      "tags": [
+        "动作",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-044",
+      "type": "dare",
+      "level": "medium",
+      "text": "在30秒内逗笑在场的至少两个人",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-045",
+      "type": "dare",
+      "level": "medium",
+      "text": "讲述一件你愿意分享的近期趣事",
+      "tags": [
+        "社交",
+        "走心"
+      ]
+    },
+    {
+      "id": "dare-046",
+      "type": "dare",
+      "level": "medium",
+      "text": "用反问句和在场一个人进行至少5句对话",
+      "tags": [
+        "互动",
+        "表演"
+      ]
+    },
+    {
+      "id": "dare-047",
+      "type": "dare",
+      "level": "medium",
+      "text": "现场学一段舞蹈（其他人示范）",
+      "tags": [
+        "互动",
+        "表演"
+      ]
+    },
+    {
+      "id": "dare-048",
+      "type": "dare",
+      "level": "medium",
+      "text": "为现场一种食物设计一句广告语",
+      "tags": [
+        "勇气",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-049",
+      "type": "dare",
+      "level": "medium",
+      "text": "选一位在场但不太熟的朋友，真诚夸奖对方",
+      "tags": [
+        "社交",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-050",
+      "type": "dare",
+      "level": "medium",
+      "text": "模仿三种不同的手机通知音",
+      "tags": [
+        "挑战",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-051",
+      "type": "dare",
+      "level": "medium",
+      "text": "坐在原地模仿一种动物的动作",
+      "tags": [
+        "模仿",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-052",
+      "type": "dare",
+      "level": "medium",
+      "text": "与一位在场朋友背对背，各自描述同一物品让大家猜",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-053",
+      "type": "dare",
+      "level": "medium",
+      "text": "录一段超过10秒的自我夸奖，只在现场播放",
+      "tags": [
+        "社交",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-054",
+      "type": "dare",
+      "level": "medium",
+      "text": "闭眼听朋友描述一个图形，再把它画在纸上",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-055",
+      "type": "dare",
+      "level": "medium",
+      "text": "现场即兴表演30秒单口秀（主题由在场的人定）",
+      "tags": [
+        "表演",
+        "创意"
+      ]
+    },
+    {
+      "id": "dare-056",
+      "type": "dare",
+      "level": "medium",
+      "text": "扮演群聊主持人，向在场每个人问一句今天心情怎样",
+      "tags": [
+        "社交",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-057",
+      "type": "dare",
+      "level": "medium",
+      "text": "把手表/手链换到不常戴的那只手上，保持一轮",
+      "tags": [
+        "动作",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-058",
+      "type": "dare",
+      "level": "medium",
+      "text": "把头发弄乱，然后用不照镜子的方式整理好",
+      "tags": [
+        "动作",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-059",
+      "type": "dare",
+      "level": "medium",
+      "text": "用计算器按出一首歌的节奏让在场人猜歌名",
+      "tags": [
+        "创意",
+        "互动"
+      ]
+    },
+    {
+      "id": "dare-060",
+      "type": "dare",
+      "level": "medium",
+      "text": "在一分钟内，每10秒换一个不同的表情",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-061",
+      "type": "dare",
+      "level": "medium",
+      "text": "和一位在场朋友隔空比一比手掌大小",
+      "tags": [
+        "互动",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-062",
+      "type": "dare",
+      "level": "medium",
+      "text": "快速说出四个不同国家的首都",
+      "tags": [
+        "反应",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-063",
+      "type": "dare",
+      "level": "medium",
+      "text": "用\"因为...所以...\"造一个无厘头的句子",
+      "tags": [
+        "创意",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-064",
+      "type": "dare",
+      "level": "medium",
+      "text": "用三种夸张语气说“我好幸运”，注意控制现场音量",
+      "tags": [
+        "勇气",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-065",
+      "type": "dare",
+      "level": "medium",
+      "text": "请在场朋友设计一个夸张拍照姿势，你现场摆出来",
+      "tags": [
+        "社交",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-066",
+      "type": "dare",
+      "level": "medium",
+      "text": "用手指在空中演示系蝴蝶结，让大家猜动作",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-067",
+      "type": "dare",
+      "level": "medium",
+      "text": "用唱的方式说接下来的三句话",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-068",
+      "type": "dare",
+      "level": "medium",
+      "text": "和在场一人猜拳，输的人模仿一种动物叫声",
+      "tags": [
+        "互动",
+        "运动"
+      ]
+    },
+    {
+      "id": "dare-069",
+      "type": "dare",
+      "level": "medium",
+      "text": "说出一件你想感谢家人的事",
+      "tags": [
+        "情感",
+        "暖心"
+      ]
+    },
+    {
+      "id": "dare-070",
+      "type": "dare",
+      "level": "medium",
+      "text": "模仿网络红人/明星的经典台词或动作",
+      "tags": [
+        "模仿",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-071",
+      "type": "dare",
+      "level": "medium",
+      "text": "闭眼听三位朋友各说一个词，猜谁说了哪个词",
+      "tags": [
+        "互动",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-072",
+      "type": "dare",
+      "level": "medium",
+      "text": "用倒述的方式从10数到1",
+      "tags": [
+        "反应",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-073",
+      "type": "dare",
+      "level": "medium",
+      "text": "现场给大家编一个简短的笑话",
+      "tags": [
+        "创意",
+        "表演"
+      ]
+    },
+    {
+      "id": "dare-074",
+      "type": "dare",
+      "level": "medium",
+      "text": "用哀怨的语气说一句正常的话",
+      "tags": [
+        "表演",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-075",
+      "type": "dare",
+      "level": "medium",
+      "text": "摆一个半张脸被手遮住的夸张造型，坚持5秒",
+      "tags": [
+        "社交",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-076",
+      "type": "dare",
+      "level": "deep",
+      "text": "向在场一位曾有小误会的朋友表达一次善意",
+      "tags": [
+        "社交",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-077",
+      "type": "dare",
+      "level": "deep",
+      "text": "说出一个你准备减少的无用习惯",
+      "tags": [
+        "社交",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-078",
+      "type": "dare",
+      "level": "deep",
+      "text": "分享一个你愿意公开、并准备改进的小缺点",
+      "tags": [
+        "勇气",
+        "探索"
+      ]
+    },
+    {
+      "id": "dare-079",
+      "type": "dare",
+      "level": "deep",
+      "text": "对在场最久的一个朋友说\"谢谢你一直陪着我\"",
+      "tags": [
+        "情感",
+        "暖心"
+      ]
+    },
+    {
+      "id": "dare-080",
+      "type": "dare",
+      "level": "deep",
+      "text": "请一位在场朋友帮你完成一个小挑战，并真诚说谢谢",
+      "tags": [
+        "社交",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-081",
+      "type": "dare",
+      "level": "deep",
+      "text": "录一段1分钟的给未来自己留言，只在现场播放",
+      "tags": [
+        "走心",
+        "探索"
+      ]
+    },
+    {
+      "id": "dare-082",
+      "type": "dare",
+      "level": "deep",
+      "text": "对着镜子/自拍镜头说三句你最喜欢自己的话",
+      "tags": [
+        "自我认知",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-083",
+      "type": "dare",
+      "level": "deep",
+      "text": "展示一个你最满意的自拍姿势，不需要打开相册",
+      "tags": [
+        "社交",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-084",
+      "type": "dare",
+      "level": "deep",
+      "text": "用一分钟时间，讲一段你最失败的经历",
+      "tags": [
+        "走心",
+        "探索"
+      ]
+    },
+    {
+      "id": "dare-085",
+      "type": "dare",
+      "level": "deep",
+      "text": "写一句你对人生的理解，并当众展示",
+      "tags": [
+        "感悟",
+        "走心"
+      ]
+    },
+    {
+      "id": "dare-086",
+      "type": "dare",
+      "level": "deep",
+      "text": "对在场每个人说一句真诚且善意的话",
+      "tags": [
+        "互动",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-087",
+      "type": "dare",
+      "level": "deep",
+      "text": "念出一段你现场写下、愿意公开的心情文字",
+      "tags": [
+        "探索",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-088",
+      "type": "dare",
+      "level": "deep",
+      "text": "对在场一位朋友说一句“很高兴今天见到你”",
+      "tags": [
+        "社交",
+        "情感"
+      ]
+    },
+    {
+      "id": "dare-089",
+      "type": "dare",
+      "level": "deep",
+      "text": "闭眼听在场每人说一句对你的善意印象",
+      "tags": [
+        "互动",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-090",
+      "type": "dare",
+      "level": "deep",
+      "text": "摆出一个你认为最夸张的自拍表情，坚持5秒",
+      "tags": [
+        "勇气",
+        "搞笑"
+      ]
+    },
+    {
+      "id": "dare-091",
+      "type": "dare",
+      "level": "deep",
+      "text": "模拟一通久别重逢的电话，由在场朋友配合演出",
+      "tags": [
+        "社交",
+        "情感"
+      ]
+    },
+    {
+      "id": "dare-092",
+      "type": "dare",
+      "level": "deep",
+      "text": "写一张匿名赞美卡给在场某个人",
+      "tags": [
+        "互动",
+        "走心"
+      ]
+    },
+    {
+      "id": "dare-093",
+      "type": "dare",
+      "level": "deep",
+      "text": "从现在开始，接下来10分钟内不能使用手机",
+      "tags": [
+        "挑战",
+        "轻松"
+      ]
+    },
+    {
+      "id": "dare-094",
+      "type": "dare",
+      "level": "deep",
+      "text": "用30秒做一段坐姿手势操，同时回答一个轻松问题",
+      "tags": [
+        "运动",
+        "勇气"
+      ]
+    },
+    {
+      "id": "dare-095",
+      "type": "dare",
+      "level": "deep",
+      "text": "把你最喜欢的一本书或电影推荐给大家，并说为什么",
+      "tags": [
+        "分享",
+        "走心"
+      ]
+    }
+  ]
+}
