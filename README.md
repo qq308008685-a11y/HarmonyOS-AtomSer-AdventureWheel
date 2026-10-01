@@ -228,14 +228,14 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 
 | 素材 | 下载地址 | 保存位置 | 格式、版本与使用说明 |
 | --- | --- | --- | --- |
-| 内置任务 | [下载 JSON](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=master) | `reference/内置任务-v1.0.json` | UTF-8、v1.0；95 条真心话、95 条大冒险；不是自定义导入文件 |
-| 数据与素材说明 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md?ref=master) | `reference/实践素材说明.md` | 字段、枚举、用途和许可 |
-| 迁移文件契约 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=master) | `reference/任务文件格式.md` | 自定义文件格式版本 1 |
-| 首页 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E9%A6%96%E9%A1%B5.jpeg?ref=master) | `reference/首页.jpeg` | JPEG、1256×2760；玩法、数量与程度 |
-| 转盘 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=master) | `reference/转盘.jpeg` | 2.5D 转盘及两个已处理扇区 |
-| 任务库 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E5%BA%93.jpeg?ref=master) | `reference/任务库.jpeg` | 内置内容与搜索筛选 |
-| 任务确认 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=master) | `reference/任务确认.jpeg` | 实际清单，可重新生成 |
-| 抽取结果 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=master) | `reference/抽取结果.jpeg` | 居中卡片、正文与交接 |
+| 内置任务 | [下载 JSON](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/内置任务-v1.0.json` | UTF-8、v1.0；95 条真心话、95 条大冒险；不是自定义导入文件 |
+| 数据与素材说明 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/实践素材说明.md` | 字段、枚举、用途和许可 |
+| 迁移文件契约 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务文件格式.md` | 自定义文件格式版本 1 |
+| 首页 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E9%A6%96%E9%A1%B5.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/首页.jpeg` | JPEG、1256×2760；玩法、数量与程度 |
+| 转盘 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/转盘.jpeg` | 2.5D 转盘及两个已处理扇区 |
+| 任务库 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E5%BA%93.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务库.jpeg` | 内置内容与搜索筛选 |
+| 任务确认 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务确认.jpeg` | 实际清单，可重新生成 |
+| 抽取结果 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/抽取结果.jpeg` | 居中卡片、正文与交接 |
 
 数据、文字说明为 Apache-2.0；截图用于本案例学习与复现，系统图形和第三方标识不因此取得同一授权，详见 [NOTICE](./NOTICE.md)。
 
@@ -262,14 +262,14 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 
 ```text
 请只下载下列教学素材到 reference/，不要克隆案例源码。
-内置任务-v1.0.json：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=master
-实践素材说明.md：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md?ref=master
-任务文件格式.md：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=master
-首页.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E9%A6%96%E9%A1%B5.jpeg?ref=master
-转盘.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=master
-任务库.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E5%BA%93.jpeg?ref=master
-任务确认.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=master
-抽取结果.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=master
+内置任务-v1.0.json：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
+实践素材说明.md：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
+任务文件格式.md：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
+首页.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E9%A6%96%E9%A1%B5.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
+转盘.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
+任务库.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E5%BA%93.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
+任务确认.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
+抽取结果.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
 确认 JSON 能解析、图片能打开；失败时排查，不用网页或编造数据替代。
 
 这个元服务叫“冒险大转盘”，用于朋友线下聚会玩真心话大冒险。
