@@ -9,7 +9,8 @@ const contents = new Map();
 const roots = ['AppScope/', 'entry/', 'hvigor/', 'tools/', 'docs/', 'cases/'];
 const rootFiles = new Set([
   '.gitignore', 'README.md', 'LICENSE', 'NOTICE.md', 'build-profile.json5',
-  'code-linter.json5', 'hvigorfile.ts', 'oh-package.json5', 'oh-package-lock.json5'
+  'code-linter.json5', 'hvigorfile.ts', 'oh-package.json5', 'oh-package-lock.json5',
+  'data/内置任务-v1.0.json'
 ]);
 const excludedRoots = [
   '.local/', 'signing/', '.arts/', '.codeartsdoer/', '.codegraph/', '.codex/', '.agents/',
@@ -92,6 +93,25 @@ if (!license.includes('Apache License') || !license.includes('Version 2.0, Janua
 }
 
 const indexedFiles = new Set(entries.map(entry => entry.file));
+if (contents.has('data/内置任务-v1.0.json')) {
+  try {
+    const data = JSON.parse(contents.get('data/内置任务-v1.0.json'));
+    if (data.format !== 'adventure-wheel-built-in-reference' || data.version !== '1.0' ||
+        data.language !== 'zh-CN' || !Array.isArray(data.tasks) || data.tasks.length !== 190 ||
+        new Set(data.tasks.map(task => task.id)).size !== 190 ||
+        data.tasks.filter(task => task.type === 'truth').length !== 95 ||
+        data.tasks.filter(task => task.type === 'dare').length !== 95 ||
+        data.tasks.some(task => typeof task.id !== 'string' ||
+          !['truth', 'dare'].includes(task.type) || !['light', 'medium', 'deep'].includes(task.level) ||
+          typeof task.text !== 'string' || !task.text.trim() ||
+          !Array.isArray(task.tags) || task.tags.some(tag => typeof tag !== 'string') ||
+          Object.keys(task).some(key => !['id', 'type', 'level', 'text', 'tags'].includes(key)))) {
+      problems.push({ file: 'data/内置任务-v1.0.json', rule: 'invalid-teaching-data' });
+    }
+  } catch {
+    problems.push({ file: 'data/内置任务-v1.0.json', rule: 'invalid-teaching-json' });
+  }
+}
 let checkedLinks = 0;
 for (const [file, text] of contents) {
   if (!/\.(?:md|html)$/.test(file)) continue;
