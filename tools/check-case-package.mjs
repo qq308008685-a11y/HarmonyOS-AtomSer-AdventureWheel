@@ -16,6 +16,11 @@ for (const name of ['baseInfo', 'introduction', 'prerequisites', 'knowledgePoint
   fail(data[name] && typeof data[name] === 'object', `missing-module:${name}`);
 }
 const base = data.baseInfo;
+const deliverables = data.introduction.deliverables;
+fail(deliverables && typeof deliverables === 'object' && !Array.isArray(deliverables) &&
+  Array.isArray(deliverables.items) && deliverables.items.length > 0 &&
+  deliverables.items.every(item => typeof item === 'string' && item.trim().length > 0),
+  'introduction-deliverables-populated');
 fail(!/<[a-zA-Z/][^>]*>/.test(data.architecture.description || ''), 'architecture-description-plain-text');
 if (!base.repoUrl) blockers.push('baseInfo.repoUrl is empty; public repository and actual import remain unverified');
 else fail(/^https:\/\/[^\s]+$/.test(base.repoUrl), 'repository-must-use-https');
@@ -51,6 +56,9 @@ for (const kp of data.knowledgePoints.list) {
 }
 for (const item of data.challenges.list) {
   fail(['简单', '中等', '困难'].includes(item.difficulty), `challenge-difficulty:${item.title}`);
+  fail(item.skills === undefined || Array.isArray(item.skills) &&
+    item.skills.every(skill => typeof skill === 'string' && skill.trim().length > 0),
+    `challenge-skills:${item.title}`);
 }
 
 function localFile(file) {
