@@ -16,6 +16,7 @@ for (const name of ['baseInfo', 'introduction', 'prerequisites', 'knowledgePoint
   fail(data[name] && typeof data[name] === 'object', `missing-module:${name}`);
 }
 const base = data.baseInfo;
+fail(!/<[a-zA-Z/][^>]*>/.test(data.architecture.description || ''), 'architecture-description-plain-text');
 if (!base.repoUrl) blockers.push('baseInfo.repoUrl is empty; public repository and actual import remain unverified');
 else fail(/^https:\/\/[^\s]+$/.test(base.repoUrl), 'repository-must-use-https');
 for (const key of ['caseId', 'updateTime', 'practiceCount', 'status', 'createdBy']) {
@@ -96,10 +97,26 @@ const htmlFile = localFile(data.practice.content);
 if (htmlFile) {
   const html = fs.readFileSync(htmlFile, 'utf8');
   fail(!/<script|<iframe|\bon\w+\s*=|javascript:|file:\/\//i.test(html), 'practice-no-active-or-local-machine-content');
-  fail((html.match(/<h3>/g) || []).length === 8, 'eight-practice-steps');
-  for (const label of ['目标', '操作', '完成标志']) {
-    fail((html.match(new RegExp(`<strong>${label}：<\/strong>`, 'g')) || []).length === 8, `practice-step-label:${label}`);
+  const decode = value => value.replace(/&(amp|lt|gt|quot|#39);/g,
+    (_, key) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" })[key]);
+  const start = html.indexOf('<h2 id="4-完整实践"');
+  const end = html.indexOf('<h2 id="5-功能检查与排障"');
+  fail(start >= 0 && end > start, 'complete-practice-section-present');
+  const segment = html.slice(start, end);
+  fail((segment.match(/<h3\b[^>]*>步骤 \d：/g) || []).length === 8, 'eight-practice-steps');
+  const plain = decode(segment.replace(/<[^>]*>/g, ''));
+  for (const label of ['目标：', '复制给 AI：', '完成标志：']) {
+    fail(plain.split(label).length - 1 === 8, `practice-step-label:${label}`);
   }
+  fail(html.includes('云端快速体验') && html.includes('本地快速体验') && html.includes('案例仓地址留空'),
+    'practice-two-experience-paths-and-empty-project');
+  const readme = fs.readFileSync(path.resolve(caseDir, '../README.md'), 'utf8').replace(/\r/g, '');
+  const sourceBlocks = [...readme.matchAll(/^```([^\n]*)\n([\s\S]*?)^```\s*$/gm)]
+    .filter(match => match[1].trim() !== 'mermaid').map(match => match[2].replace(/\n$/, ''));
+  const htmlBlocks = [...html.matchAll(/<pre\b[^>]*><code\b[^>]*>([\s\S]*?)<\/code><\/pre>/g)]
+    .map(match => decode(match[1]));
+  fail(sourceBlocks.length > 0 && sourceBlocks.every((block, index) => block === htmlBlocks[index]),
+    'readme-practice-every-text-block-exact');
 }
 console.log(JSON.stringify({ status: errors.length ? 'FAIL' : blockers.length ? 'DRAFT' : 'LOCAL_PASS',
   errors, blockers, knowledgePoints: data.knowledgePoints.list.length, media }, null, 2));
