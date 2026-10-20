@@ -8,12 +8,11 @@
     "duration": 180,
     "author": "鸿蒙开发实践中心",
     "tags": [
-      "鸿蒙元服务",
-      "ArkTS",
-      "ArkUI",
-      "Canvas",
-      "本地存储",
-      "文件迁移"
+      "atomic_service",
+      "arkts",
+      "arkui",
+      "canvas",
+      "persistence"
     ],
     "category": "industry_game",
     "repoUrl": "https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel.git",
@@ -252,8 +251,8 @@
         "title": "聚会互动与活动抽签",
         "desc": "把任务替换为自愿参加的互动题或活动签条，保留先确认再抽取的流程。",
         "skills": [
-          "Canvas",
-          "状态管理",
+          "canvas",
+          "state_mgmt",
           "随机抽样"
         ],
         "migrationPoints": [
@@ -266,7 +265,7 @@
         "title": "学习练习卡",
         "desc": "把任务库换成练习题，在本轮完成后排除该题，通过文件交换自定义题组。",
         "skills": [
-          "Preferences",
+          "preferences",
           "JSON",
           "规则测试"
         ],
@@ -322,7 +321,7 @@
         "difficulty": "困难",
         "kpTag": "ArkUI",
         "skills": [
-          "ArkUI",
+          "arkui",
           "自适应布局",
           "设备验证"
         ],
