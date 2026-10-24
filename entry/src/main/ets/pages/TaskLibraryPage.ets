@@ -27,10 +27,29 @@ struct TaskLibraryPage {
   @State editorLevel: RiskLevel = RiskLevel.LIGHT;
   @State editorEnabled: boolean = true;
   @State statusText: string = '';
+  @State isBusy: boolean = false;
+  @State localReady: boolean = false;
+  @State localLoadFailed: boolean = false;
   private presetTasks: TaskItem[] = getAllBuiltInTasks();
 
   aboutToAppear(): void {
-    this.reloadLocalTasks();
+    this.refreshLocalTasks();
+  }
+
+  private async refreshLocalTasks(): Promise<void> {
+    if (this.isBusy) {
+      return;
+    }
+    this.isBusy = true;
+    this.statusText = '';
+    try {
+      await this.reloadLocalTasks();
+    } catch (error) {
+      this.statusText = '暂时无法读取本地任务，请重试读取';
+      console.error('TaskLibraryPage: 读取失败');
+    } finally {
+      this.isBusy = false;
+    }
   }
 
   private async reloadLocalTasks(): Promise<void> {
@@ -41,9 +60,34 @@ struct TaskLibraryPage {
       }
       await LocalTaskStore.init(context);
       this.localTasks = await LocalTaskStore.list();
+      this.localReady = true;
+      this.localLoadFailed = false;
     } catch (error) {
-      this.statusText = '暂时无法读取本地任务';
-      console.error(`TaskLibraryPage: ${JSON.stringify(error)}`);
+      this.localReady = false;
+      this.localLoadFailed = true;
+      throw new Error('暂时无法读取本地任务');
+    }
+  }
+
+  private beginOperation(): boolean {
+    if (this.isBusy) {
+      return false;
+    }
+    if (!this.localReady) {
+      this.statusText = '请先重试读取本地任务';
+      return false;
+    }
+    this.isBusy = true;
+    this.statusText = '';
+    return true;
+  }
+
+  private async reloadAfterWrite(successText: string): Promise<void> {
+    try {
+      await this.reloadLocalTasks();
+      this.statusText = successText;
+    } catch (error) {
+      this.statusText = successText + '，但列表刷新失败，请重试读取';
     }
   }
 
@@ -80,6 +124,9 @@ struct TaskLibraryPage {
   }
 
   private openCreateEditor(): void {
+    if (this.isBusy || !this.localReady) {
+      return;
+    }
     this.editorId = '';
     this.editorText = '';
     this.editorType = TaskType.TRUTH;
@@ -90,6 +137,9 @@ struct TaskLibraryPage {
   }
 
   private openEditEditor(task: LocalTaskRecord): void {
+    if (this.isBusy || !this.localReady) {
+      return;
+    }
     this.editorId = task.id;
     this.editorText = task.text;
     this.editorType = task.type;
@@ -100,6 +150,9 @@ struct TaskLibraryPage {
   }
 
   private async saveEditor(): Promise<void> {
+    if (this.isBusy) {
+      return;
+    }
     const text = this.editorText.trim();
     const editorId = this.editorId;
     const editorType = this.editorType;
@@ -113,15 +166,17 @@ struct TaskLibraryPage {
       this.statusText = `任务内容最多 ${Constants.CUSTOM_TASK_MAX_LENGTH} 个字`;
       return;
     }
-    if (await LocalTaskStore.hasDuplicate(editorType, text, editorId)) {
-      this.statusText = '同类型中已经有相同任务';
+    if (!this.beginOperation()) {
       return;
     }
-    if (editorId.length === 0) {
-      await LocalTaskStore.add(editorType, editorLevel, text, editorEnabled);
-    } else {
-      const original = this.localTasks.find((item: LocalTaskRecord) => item.id === editorId);
-      if (original) {
+    try {
+      if (editorId.length === 0) {
+        await LocalTaskStore.add(editorType, editorLevel, text, editorEnabled);
+      } else {
+        const original = this.localTasks.find((item: LocalTaskRecord) => item.id === editorId);
+        if (!original) {
+          throw new Error('这条任务已不存在，请关闭编辑后重新读取');
+        }
         const record: LocalTaskRecord = {
           id: original.id,
           type: editorType,
@@ -133,76 +188,96 @@ struct TaskLibraryPage {
         };
         await LocalTaskStore.update(record);
       }
+      this.editorVisible = false;
+      await this.reloadAfterWrite('任务已保存');
+    } catch (error) {
+      this.statusText = `保存未完成：${(error as Error).message}`;
+    } finally {
+      this.isBusy = false;
     }
-    this.editorVisible = false;
-    await this.reloadLocalTasks();
   }
 
-  private requestDelete(task: LocalTaskRecord): void {
-    this.getUIContext().getPromptAction().showDialog({
-      title: '删除这条任务？',
-      message: task.text,
-      buttons: [
-        { text: '取消', color: Constants.COLOR_TEXT_SUB },
-        { text: '删除', color: Constants.COLOR_DANGER }
-      ]
-    }).then((result) => {
+  private async requestDelete(task: LocalTaskRecord): Promise<void> {
+    if (!this.beginOperation()) {
+      return;
+    }
+    try {
+      const result = await this.getUIContext().getPromptAction().showDialog({
+        title: '删除这条任务？',
+        message: task.text,
+        buttons: [
+          { text: '取消', color: Constants.COLOR_TEXT_SUB },
+          { text: '删除', color: Constants.COLOR_DANGER }
+        ]
+      });
       if (result.index === 1) {
-        this.deleteTask(task.id);
+        await LocalTaskStore.remove(task.id);
+        await this.reloadAfterWrite('任务已删除');
       }
-    }).catch((error: Error) => {
-      console.error(`TaskLibraryPage: 删除确认框失败 ${error.message}`);
-    });
-  }
-
-  private async deleteTask(id: string): Promise<void> {
-    await LocalTaskStore.remove(id);
-    await this.reloadLocalTasks();
+    } catch (error) {
+      this.statusText = `删除未完成：${(error as Error).message}`;
+    } finally {
+      this.isBusy = false;
+    }
   }
 
   private async toggleTask(task: LocalTaskRecord, enabled: boolean): Promise<void> {
-    await LocalTaskStore.setEnabled(task.id, enabled);
-    await this.reloadLocalTasks();
+    if (!this.beginOperation()) {
+      return;
+    }
+    try {
+      await LocalTaskStore.setEnabled(task.id, enabled);
+      await this.reloadAfterWrite(enabled ? '任务已启用' : '任务已停用');
+    } catch (error) {
+      this.statusText = `启停未完成：${(error as Error).message}`;
+      this.localTasks = [...this.localTasks];
+    } finally {
+      this.isBusy = false;
+    }
   }
 
   private async importTasks(): Promise<void> {
+    if (!this.beginOperation()) {
+      return;
+    }
     try {
       const context = this.getUIContext().getHostContext();
       if (!context) {
         throw new Error('无法获取页面上下文');
       }
       const preview = await TaskTransferService.selectImport(context, this.localTasks);
-      this.showImportPreview(preview);
+      await this.showImportPreview(preview);
     } catch (error) {
       this.statusText = `导入未完成：${(error as Error).message}`;
+    } finally {
+      this.isBusy = false;
     }
   }
 
-  private showImportPreview(preview: ImportPreview): void {
-    this.getUIContext().getPromptAction().showDialog({
+  private async showImportPreview(preview: ImportPreview): Promise<void> {
+    const result = await this.getUIContext().getPromptAction().showDialog({
       title: '要导入这些任务吗？',
       message: `可以添加 ${preview.validCount} 条。重复的 ${preview.duplicateCount} 条、不符合要求的 ${preview.invalidCount} 条会自动跳过。`,
       buttons: [
         { text: '取消', color: Constants.COLOR_TEXT_SUB },
         { text: '确认导入', color: Constants.COLOR_TEAL }
       ]
-    }).then((result) => {
-      if (result.index === 1) {
-        this.confirmImport(preview);
-      }
-    }).catch((error: Error) => {
-      this.statusText = `导入确认未完成：${error.message}`;
     });
+    if (result.index === 1) {
+      await this.confirmImport(preview);
+    }
   }
 
   private async confirmImport(preview: ImportPreview): Promise<void> {
     const added = await LocalTaskStore.mergeImported(preview.validTasks);
-    await this.reloadLocalTasks();
     this.activeTab = LibraryTab.CUSTOM;
-    this.statusText = `已导入 ${added} 条任务`;
+    await this.reloadAfterWrite(`已导入 ${added} 条任务`);
   }
 
   private async exportTasks(): Promise<void> {
+    if (!this.beginOperation()) {
+      return;
+    }
     try {
       const context = this.getUIContext().getHostContext();
       if (!context) {
@@ -212,19 +287,26 @@ struct TaskLibraryPage {
       this.statusText = `已导出 ${count} 条任务`;
     } catch (error) {
       this.statusText = `导出未完成：${(error as Error).message}`;
+    } finally {
+      this.isBusy = false;
     }
   }
 
   private async shareTasks(): Promise<void> {
+    if (!this.beginOperation()) {
+      return;
+    }
     try {
       const context = this.getUIContext().getHostContext();
       if (!context) {
         throw new Error('无法获取页面上下文');
       }
       await TaskTransferService.shareTasks(context, this.localTasks);
-      this.statusText = '';
+      this.statusText = '已打开接收入口，请在目标应用检查文件';
     } catch (error) {
       this.statusText = `分享未完成：${(error as Error).message}`;
+    } finally {
+      this.isBusy = false;
     }
   }
 
@@ -309,6 +391,7 @@ struct TaskLibraryPage {
       Column() {
         Toggle({ type: ToggleType.Switch, isOn: task.enabled })
           .selectedColor(Constants.COLOR_TEAL)
+          .enabled(!this.isBusy && this.localReady)
           .onChange((value: boolean) => this.toggleTask(task, value))
         Row() {
           Button('编辑')
@@ -316,12 +399,14 @@ struct TaskLibraryPage {
             .height(30)
             .fontColor(Constants.COLOR_TEAL)
             .backgroundColor(Color.Transparent)
+            .enabled(!this.isBusy && this.localReady)
             .onClick(() => this.openEditEditor(task))
           Button('删除')
             .fontSize(12)
             .height(30)
             .fontColor(Constants.COLOR_DANGER)
             .backgroundColor(Color.Transparent)
+            .enabled(!this.isBusy && this.localReady)
             .onClick(() => this.requestDelete(task))
         }
         .margin({ top: 8 })
@@ -348,6 +433,7 @@ struct TaskLibraryPage {
           .fontSize(13)
           .fontColor(Constants.COLOR_TEXT_SUB)
           .backgroundColor(Color.Transparent)
+          .enabled(!this.isBusy)
           .onClick(() => this.editorVisible = false)
       }
       .width('100%')
@@ -363,12 +449,14 @@ struct TaskLibraryPage {
           .layoutWeight(1)
           .fontColor(this.editorType === TaskType.TRUTH ? Constants.COLOR_WHITE : Constants.COLOR_TEAL)
           .backgroundColor(this.editorType === TaskType.TRUTH ? Constants.COLOR_TEAL : Constants.COLOR_TRUTH_LIGHT)
+          .enabled(!this.isBusy)
           .onClick(() => this.editorType = TaskType.TRUTH)
         Button('大冒险')
           .layoutWeight(1)
           .margin({ left: 10 })
           .fontColor(this.editorType === TaskType.DARE ? Constants.COLOR_WHITE : Constants.COLOR_ORANGE)
           .backgroundColor(this.editorType === TaskType.DARE ? Constants.COLOR_ORANGE : Constants.COLOR_DARE_LIGHT)
+          .enabled(!this.isBusy)
           .onClick(() => this.editorType = TaskType.DARE)
       }
       .width('100%')
@@ -385,6 +473,7 @@ struct TaskLibraryPage {
         .maxLength(Constants.CUSTOM_TASK_MAX_LENGTH)
         .backgroundColor(Constants.COLOR_INPUT)
         .borderRadius(Constants.RADIUS_SM)
+        .enabled(!this.isBusy)
         .onChange((value: string) => {
           this.editorText = TaskTextRules.limit(value);
           if (this.statusText.startsWith('任务内容')) {
@@ -427,6 +516,7 @@ struct TaskLibraryPage {
             .fontColor(this.editorLevel === level ? Constants.COLOR_WHITE : Constants.COLOR_TEXT_SUB)
             .backgroundColor(this.editorLevel === level ? Constants.COLOR_INK : Constants.COLOR_NEUTRAL)
             .margin({ right: level === RiskLevel.DEEP ? 0 : 8 })
+            .enabled(!this.isBusy)
             .onClick(() => this.editorLevel = level)
         })
       }
@@ -440,6 +530,7 @@ struct TaskLibraryPage {
         Blank()
         Toggle({ type: ToggleType.Switch, isOn: this.editorEnabled })
           .selectedColor(Constants.COLOR_TEAL)
+          .enabled(!this.isBusy)
           .onChange((value: boolean) => this.editorEnabled = value)
       }
       .width('100%')
@@ -453,7 +544,7 @@ struct TaskLibraryPage {
           .margin({ top: 12 })
       }
 
-      Button('保存任务')
+      Button(this.isBusy ? '正在保存…' : '保存任务')
         .width('100%')
         .height(50)
         .fontSize(16)
@@ -462,6 +553,7 @@ struct TaskLibraryPage {
         .backgroundColor(Constants.COLOR_ORANGE)
         .borderRadius(Constants.RADIUS_SM)
         .margin({ top: 22 })
+        .enabled(!this.isBusy && this.localReady)
         .onClick(() => this.saveEditor())
     }
     .width('calc(100% - 32vp)')
@@ -479,6 +571,7 @@ struct TaskLibraryPage {
             .fontSize(13)
             .fontColor(Constants.COLOR_DARK_TEXT)
             .backgroundColor(Color.Transparent)
+            .enabled(!this.isBusy)
             .onClick(() => this.getUIContext().getRouter().back())
           Column() {
             Text('任务库')
@@ -542,6 +635,7 @@ struct TaskLibraryPage {
               .fontWeight(FontWeight.Bold)
               .fontColor(Constants.COLOR_WHITE)
               .backgroundColor(Constants.COLOR_ORANGE)
+              .enabled(!this.isBusy && this.localReady)
               .onClick(() => this.openCreateEditor())
           }
         }
@@ -570,6 +664,7 @@ struct TaskLibraryPage {
               .fontSize(12)
               .fontColor(Constants.COLOR_TEAL)
               .backgroundColor(Constants.COLOR_TRUTH_LIGHT)
+              .enabled(!this.isBusy && this.localReady)
               .onClick(() => this.importTasks())
             Button('导出任务')
               .layoutWeight(1)
@@ -577,6 +672,7 @@ struct TaskLibraryPage {
               .fontSize(12)
               .fontColor(Constants.COLOR_TEAL)
               .backgroundColor(Constants.COLOR_TRUTH_LIGHT)
+              .enabled(!this.isBusy && this.localReady)
               .onClick(() => this.exportTasks())
             Button('分享我的任务')
               .layoutWeight(1.35)
@@ -585,12 +681,20 @@ struct TaskLibraryPage {
               .fontWeight(FontWeight.Bold)
               .fontColor(Constants.COLOR_WHITE)
               .backgroundColor(Constants.COLOR_ORANGE)
-              .enabled(this.localTasks.length > 0)
+              .enabled(!this.isBusy && this.localReady && this.localTasks.length > 0)
               .opacity(this.localTasks.length > 0 ? 1 : 0.45)
               .onClick(() => this.shareTasks())
           }
           .width('calc(100% - 32vp)')
           .margin({ bottom: 10 })
+        }
+
+        if (this.isBusy && !this.editorVisible) {
+          Text('正在处理，请稍候…')
+            .width('calc(100% - 32vp)')
+            .fontSize(12)
+            .fontColor(Constants.COLOR_TEXT_SUB)
+            .padding({ bottom: 8 })
         }
 
         if (this.statusText.length > 0 && !this.editorVisible) {
@@ -599,6 +703,14 @@ struct TaskLibraryPage {
             .fontSize(12)
             .fontColor(Constants.COLOR_TEXT_SUB)
             .padding({ bottom: 8 })
+        }
+
+        if (this.localLoadFailed && !this.editorVisible) {
+          Button('重试读取')
+            .fontColor(Constants.COLOR_TEAL)
+            .backgroundColor(Constants.COLOR_TRUTH_LIGHT)
+            .enabled(!this.isBusy)
+            .onClick(() => this.refreshLocalTasks())
         }
 
         if ((this.activeTab === LibraryTab.PRESET && this.visiblePresets().length === 0) ||
@@ -617,11 +729,13 @@ struct TaskLibraryPage {
                 Button('添加任务')
                   .fontColor(Constants.COLOR_WHITE)
                   .backgroundColor(Constants.COLOR_ORANGE)
+                  .enabled(!this.isBusy && this.localReady)
                   .onClick(() => this.openCreateEditor())
                 Button('导入任务')
                   .fontColor(Constants.COLOR_TEAL)
                   .backgroundColor(Constants.COLOR_TRUTH_LIGHT)
                   .margin({ left: 10 })
+                  .enabled(!this.isBusy && this.localReady)
                   .onClick(() => this.importTasks())
               }
               .margin({ top: 18 })
@@ -657,7 +771,11 @@ struct TaskLibraryPage {
           .width('100%')
           .height('100%')
           .backgroundColor('rgba(36,17,23,0.56)')
-          .onClick(() => this.editorVisible = false)
+          .onClick(() => {
+            if (!this.isBusy) {
+              this.editorVisible = false;
+            }
+          })
         this.editorPanel()
       }
     }

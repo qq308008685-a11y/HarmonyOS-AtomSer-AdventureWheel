@@ -227,13 +227,13 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 
 ### 统一教学素材
 
-教学素材 v1.0：190 条内置任务及 2026-10-02 的中文手机模拟器原图。字段和用途见[实践素材说明](./docs/实践素材说明.md)，迁移契约见[任务文件格式](./docs/任务文件格式.md)。
+教学素材采用“基础 v1.0 ＋ 2026-10-24 勘误”：190 条内置任务和 2026-10-02 的中文手机模拟器原图。固定下载保持原始版本；取得素材时按下方提示校订 truth-090 正文和文件大小单位，校订后再开发。字段和用途见[实践素材说明](./docs/实践素材说明.md)，迁移契约见[任务文件格式](./docs/任务文件格式.md)。
 
 | 素材 | 下载地址 | 保存位置 | 格式、版本与使用说明 |
 | --- | --- | --- | --- |
-| 内置任务 | [下载 JSON](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/内置任务-v1.0.json` | UTF-8、v1.0；95 条真心话、95 条大冒险；不是自定义导入文件 |
+| 内置任务 | [下载 JSON](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/内置任务-v1.0.json` | UTF-8、v1.0 基础文件；按下方勘误校订后使用，仍为 95 条真心话、95 条大冒险；不是自定义导入文件 |
 | 数据与素材说明 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/实践素材说明.md` | 字段、枚举、用途和许可 |
-| 迁移文件契约 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务文件格式.md` | 自定义文件格式版本 1 |
+| 迁移文件契约 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务文件格式.md` | 自定义文件格式版本 1；下载后按下方勘误统一 1 MiB 单位 |
 | 首页 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E9%A6%96%E9%A1%B5.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/首页.jpeg` | JPEG、1256×2760；玩法、数量与程度 |
 | 转盘 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/转盘.jpeg` | 2.5D 转盘及两个已处理扇区 |
 | 任务库 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E5%BA%93.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务库.jpeg` | 内置内容与搜索筛选 |
@@ -274,6 +274,12 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 任务确认.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
 抽取结果.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
 确认 JSON 能解析、图片能打开；失败时排查，不用网页或编造数据替代。
+
+下载成功后，先应用本教程的 2026-10-24 勘误，再继续设计：
+1. 内置 JSON 中只按 id="truth-090" 定位一条记录。若正文为“如果可以不打后果地做一件事，你会做什么？”，改为“如果可以不计后果地做一件事，你会做什么？”；已经是新正文则保持，其他正文或ID不唯一时停止并报告。
+2. 保留 JSON 的 UTF-8、无 BOM、缩进与换行，只替换这条正文；不改 ID、顺序、类型、程度、标签和 version="1.0"。校订后仍为 190 条、95 条真心话与95条大冒险，SHA-256 应为 81586011ce0674a05d0292313db9af838f3d224fd8c5b76e79ad378b2c1d3f0e。
+3. 下载的任务文件格式说明中“1 MB”校订为“1 MiB（1,048,576 字节）”，实际限制始终是 1024×1024 字节，不能改成1,000,000字节。
+4. 在下载的素材说明注明“基础 v1.0 ＋ 2026-10-24 勘误”；固定下载的原始文件未变，不能把校订后文件说成固定提交的原始字节。截图继续用原始版本，不改绘UI。
 
 这个元服务叫“冒险大转盘”，用于朋友线下聚会玩真心话大冒险。
 流程：选择玩法、数量和挑战程度 → 查看确认清单 → 轮流转动 → 看结果 → 交接。
@@ -352,6 +358,7 @@ truth/dare 对应真心话/大冒险，light/medium/deep 对应轻松/适中/深
 灰色完成扇区保留原位置，不再被选中。
 最后一项显示“完成本局”，结束返回首页，新局重新计算候选。
 检查 2 个任务整局、6 个任务连续抽取、反复点击与全部完成。
+退出、重置或重新开始旋转前，清理全部旋转、回弹和结果回调；不要让旧回调在已离开的组件上继续绘制。
 ```
 
 完成标志：指针与结果一致，同局不重复，交接和结束数量正确。
@@ -395,9 +402,10 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 通过系统文件路由与只读文件授权交给接收应用。
 导出和分享包括全部自定义任务及停用项，不含内置任务。
 导入 JSON/TXT 先显示新增、重复、无效统计，再确认合并，不覆盖已有记录。
-单文件不超过 1 MiB、最多 1000 条，拒绝非法格式、版本与超限文件。
+单文件不超过 1 MiB（1,048,576 字节）、最多 1000 条，拒绝非法格式、版本与超限文件。
 处理选择取消、读写失败、无接收应用，提示恢复动作，不伪报发送成功。
 检查新增后重启保留、停用不被抽取、重复导入不增加、非法文件不写入。
+从任务库返回首页时重新读取自定义总数与启用数，新增、启停和删除后立即显示当前统计；异步初始化只完成一次，读取失败可重试，过期请求不得覆盖新统计。
 ```
 
 完成标志：持久化、合并不覆盖、两种扩展名的统一契约及错误恢复可检查。
@@ -425,6 +433,7 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 没有则检查恢复提示，不能把拉起应用说成发送成功。
 检查日志，修复可复现问题并重跑。
 最后告诉我能完成哪些功能、HAP 位置及仍需我处理的事项。
+分别验证新增、启停和删除自己的任务后返回原首页，统计立即更新；轮盘旋转或回弹时快速离开、重入，旧回调不再绘制或干扰新一局。
 ```
 
 完成标志：设备核心流程、本地保存与错误恢复符合预期，知道设备限制如何处理。
@@ -583,14 +592,16 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 | 项目 | 内容 |
 | --- | --- |
 | 维护团队 | 鸿蒙开发实践中心 · 在线开发实践平台 |
-| 当前案例版本 | 文档 v1.1；教学素材 v1.0；工程版本 `1.0.0` |
-| 文档更新日期 | 2026-10-16 |
+| 当前案例版本 | 文档 v1.2；教学素材基础 v1.0 ＋ 2026-10-24 勘误；工程版本 `1.0.0` |
+| 文档更新日期 | 2026-10-24 |
 | 代码获取方式 | 默认分支最新内容 |
-| 教学素材版本 | v1.0；数据与五张原图采用素材表中的固定文件版本 |
+| 教学素材版本 | 基础 v1.0 固定下载；数据和文字按 2026-10-24 勘误校订，五张原图保持原版本 |
 | 实践路径 | 第 3 章体验现成代码，第 4 章从空项目独立构建 |
 | 兼容限制 | 手机元服务；目标 API 23、最低兼容 API 20；安装须满足签名条件 |
 
 #### 案例迭代记录
+
+- 2026-10-24：修复任务库返回首页统计与转盘回调清理，校正任务注释、truth-090正文及1 MiB单位；同步素材勘误、教学检查与五段教程。
 
 - 2026-08-26：樱桃可乐配色、2.5D 转盘、本地任务库、同局标记和 TXT / JSON 迁移。
 - 2026-09-30：整理工程说明、文件契约和平台导入材料。

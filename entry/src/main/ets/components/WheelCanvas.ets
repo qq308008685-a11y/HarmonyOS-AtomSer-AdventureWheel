@@ -34,12 +34,14 @@ export struct WheelCanvas {
   private selectedIndex: number = -1;
   private pointerOffsetY: number = 0;
   private resultTimer: number = -1;
+  private reboundTimer: number = -1;
 
   aboutToAppear(): void {
     this.sectorColors = generateSectorColors(this.tasks, this.mode);
   }
 
   onTasksChange(): void {
+    this.resetMotion();
     this.sectorColors = generateSectorColors(this.tasks, this.mode);
     this.currentAngle = 0;
     this.selectedIndex = -1;
@@ -48,10 +50,7 @@ export struct WheelCanvas {
   }
 
   onRoundChange(): void {
-    if (this.resultTimer >= 0) {
-      clearTimeout(this.resultTimer);
-      this.resultTimer = -1;
-    }
+    this.resetMotion();
     this.selectedIndex = -1;
     this.pointerOffsetY = 0;
     this.isSettling = false;
@@ -59,18 +58,36 @@ export struct WheelCanvas {
   }
 
   onCompletedTasksChange(): void {
+    this.resetMotion();
     this.selectedIndex = -1;
     this.pointerOffsetY = 0;
     this.drawWheel();
   }
 
   aboutToDisappear(): void {
+    this.resetMotion();
+  }
+
+  private clearTimers(): void {
     if (this.animationTimer >= 0) {
       clearInterval(this.animationTimer);
+      this.animationTimer = -1;
     }
     if (this.resultTimer >= 0) {
       clearTimeout(this.resultTimer);
+      this.resultTimer = -1;
     }
+    if (this.reboundTimer >= 0) {
+      clearTimeout(this.reboundTimer);
+      this.reboundTimer = -1;
+    }
+  }
+
+  private resetMotion(): void {
+    this.clearTimers();
+    this.isSpinning = false;
+    this.isSettling = false;
+    this.pointerOffsetY = 0;
   }
 
   build() {
@@ -229,6 +246,7 @@ export struct WheelCanvas {
     if (this.isSpinning || this.isSettling || targetIndex < 0) {
       return;
     }
+    this.clearTimers();
     this.selectedIndex = -1;
     this.pointerOffsetY = 0;
     this.isSpinning = true;
@@ -266,8 +284,7 @@ export struct WheelCanvas {
   }
 
   private stopSpin(): void {
-    clearInterval(this.animationTimer);
-    this.animationTimer = -1;
+    this.clearTimers();
     this.isSpinning = false;
     this.isSettling = true;
     SoundEngine.playStop();
@@ -275,7 +292,8 @@ export struct WheelCanvas {
     this.pointerOffsetY = 6;
     this.drawWheel();
     const result = this.getResultTask();
-    setTimeout(() => {
+    this.reboundTimer = setTimeout(() => {
+      this.reboundTimer = -1;
       this.pointerOffsetY = 0;
       this.drawWheel();
     }, 120);

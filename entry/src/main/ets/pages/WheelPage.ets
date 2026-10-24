@@ -19,8 +19,10 @@ struct WheelPage {
   @State resultBurstScale: number = 0.55;
   @State turnNumber: number = 1;
   @State completedTaskIds: string[] = [];
+  @State resultClosing: boolean = false;
   private config: GameConfig | null = null;
   private engine: TaskEngine = new TaskEngine();
+  private resultTimers: number[] = [];
 
   aboutToAppear(): void {
     const params = this.getUIContext().getRouter().getParams() as Record<string, Object>;
@@ -32,7 +34,29 @@ struct WheelPage {
     }
   }
 
+  aboutToDisappear(): void {
+    this.clearResultTimers();
+    this.resultClosing = false;
+    this.showResult = false;
+    this.resultTask = null;
+  }
+
+  private scheduleResultTimer(callback: () => void, delay: number): void {
+    const timer = setTimeout(() => {
+      this.resultTimers = this.resultTimers.filter((id: number) => id !== timer);
+      callback();
+    }, delay);
+    this.resultTimers.push(timer);
+  }
+
+  private clearResultTimers(): void {
+    this.resultTimers.forEach((timer: number) => clearTimeout(timer));
+    this.resultTimers = [];
+  }
+
   private onResult(task: TaskItem): void {
+    this.clearResultTimers();
+    this.resultClosing = false;
     this.resultTask = task;
     this.backdropOpacity = 0;
     this.dialogOpacity = 0;
@@ -41,16 +65,16 @@ struct WheelPage {
     this.resultBurstOpacity = 0;
     this.resultBurstScale = 0.55;
     this.showResult = true;
-    setTimeout(() => {
+    this.scheduleResultTimer(() => {
       this.backdropOpacity = 1;
       this.resultBurstOpacity = 1;
       this.resultBurstScale = 1;
     }, 30);
-    setTimeout(() => {
+    this.scheduleResultTimer(() => {
       this.resultBurstOpacity = 0;
       this.resultBurstScale = 1.55;
     }, 360);
-    setTimeout(() => {
+    this.scheduleResultTimer(() => {
       this.dialogOpacity = 1;
       this.sheetOffset = 0;
       this.resultCardScale = 1;
@@ -58,15 +82,21 @@ struct WheelPage {
   }
 
   private closeResult(continueGame: boolean): void {
+    if (this.resultClosing || !this.showResult || this.resultTask === null) {
+      return;
+    }
+    this.resultClosing = true;
+    this.clearResultTimers();
     const completedTaskId = continueGame && this.resultTask ? this.resultTask.id : '';
     this.backdropOpacity = 0;
     this.dialogOpacity = 0;
     this.sheetOffset = 18;
     this.resultCardScale = 0.96;
     this.resultBurstOpacity = 0;
-    setTimeout(() => {
+    this.scheduleResultTimer(() => {
       this.showResult = false;
       this.resultTask = null;
+      this.resultClosing = false;
       if (continueGame) {
         if (completedTaskId.length > 0 && this.completedTaskIds.indexOf(completedTaskId) < 0) {
           this.completedTaskIds = [...this.completedTaskIds, completedTaskId];
@@ -234,6 +264,7 @@ struct WheelPage {
               .fontColor(Constants.COLOR_TEXT_SUB)
               .backgroundColor(Constants.COLOR_NEUTRAL)
               .borderRadius(Constants.RADIUS_SM)
+              .enabled(!this.resultClosing)
               .onClick(() => this.closeResult(false))
             Button(this.isLastRemainingTask() ? '完成本局' : '交给下一位')
               .layoutWeight(1)
@@ -244,6 +275,7 @@ struct WheelPage {
               .backgroundColor(Constants.COLOR_ORANGE)
               .borderRadius(Constants.RADIUS_SM)
               .margin({ left: 12 })
+              .enabled(!this.resultClosing)
               .onClick(() => this.closeResult(!this.isLastRemainingTask()))
           }
           .width('100%')

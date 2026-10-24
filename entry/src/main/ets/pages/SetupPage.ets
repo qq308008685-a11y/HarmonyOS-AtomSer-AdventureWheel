@@ -24,26 +24,66 @@ struct SetupPage {
   private pendingConfig: GameConfig | null = null;
   private engine: TaskEngine = new TaskEngine();
   private builtInTaskCount: number = getAllBuiltInTasks().length;
+  private localStateInitialization: Promise<void> | null = null;
+  private taskStatsRequest: number = 0;
+  private taskStatsErrorText: string = '任务库统计读取失败，请返回页面重试';
 
-  aboutToAppear(): void {
+  onPageShow(): void {
     this.loadLocalState();
   }
 
-  private async loadLocalState(): Promise<void> {
+  onPageHide(): void {
+    this.taskStatsRequest++;
+  }
+
+  private async initializeLocalState(): Promise<void> {
+    const context = this.getUIContext().getHostContext();
+    if (!context) {
+      throw new Error('无法获取页面上下文');
+    }
+    await PreferenceStore.init(context);
+    await LocalTaskStore.init(context);
+    const mode = await PreferenceStore.getLastMode();
+    const count = await PreferenceStore.getLastCount();
+    const risk = await PreferenceStore.getRiskLevel();
+    this.mode = mode;
+    this.taskCount = count;
+    this.riskLevel = risk;
+  }
+
+  private async ensureLocalState(): Promise<void> {
+    if (this.localStateInitialization === null) {
+      this.localStateInitialization = this.initializeLocalState();
+    }
+    const initialization = this.localStateInitialization;
     try {
-      const context = this.getUIContext().getHostContext();
-      if (!context) {
-        throw new Error('无法获取页面上下文');
+      await initialization;
+    } catch (error) {
+      if (this.localStateInitialization === initialization) {
+        this.localStateInitialization = null;
       }
-      await PreferenceStore.init(context);
-      await LocalTaskStore.init(context);
-      this.mode = await PreferenceStore.getLastMode();
-      this.taskCount = await PreferenceStore.getLastCount();
-      this.riskLevel = await PreferenceStore.getRiskLevel();
+      throw new Error('本地状态初始化失败');
+    }
+  }
+
+  private async loadLocalState(): Promise<void> {
+    const request = ++this.taskStatsRequest;
+    try {
+      await this.ensureLocalState();
       const records = await LocalTaskStore.list();
+      if (request !== this.taskStatsRequest) {
+        return;
+      }
       this.customTaskCount = records.length;
       this.enabledTaskCount = records.filter((item: LocalTaskRecord) => item.enabled).length;
+      if (this.setupStatusText === this.taskStatsErrorText) {
+        this.setupStatusText = '';
+      }
     } catch (error) {
+      if (request !== this.taskStatsRequest) {
+        return;
+      }
+      this.setupStatusText = this.taskStatsErrorText;
       console.error(`SetupPage: 加载本地状态失败 ${JSON.stringify(error)}`);
     }
   }

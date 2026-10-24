@@ -26,7 +26,7 @@ export class TaskTransferService {
         try {
           const fileStat = await fs.stat(file.fd);
           if (fileStat.size > TaskTransferService.MAX_FILE_SIZE) {
-            throw new Error('导入文件不能超过 1 MB');
+            throw new Error('导入文件不能超过 1 MiB（1,048,576 字节）');
           }
           const buffer = new ArrayBuffer(fileStat.size);
           const bytesRead = await fs.read(file.fd, buffer);

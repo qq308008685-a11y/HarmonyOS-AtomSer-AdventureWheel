@@ -1,181 +1,7 @@
-<article class="case-practice" lang="zh-CN">
-<p>用 AI 对话体验一款纯本地鸿蒙元服务，再从空项目构建自己的版本：确认本局任务、轮流转动转盘、保存自定义玩法，通过文件带到另一台设备。</p>
-<p><img src="cover.png" alt="冒险大转盘成品预览：开局设置、轮流转动与本地任务库" style="max-width:100%;height:auto"></p>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>适合谁</td>
-<td>能使用 AI 编程工具、愿意核对界面和运行结果的开发者；不要求先会手写 ArkTS</td>
-</tr>
-<tr>
-<td>难度与耗时</td>
-<td>入门到进阶；快速体验约 15–30 分钟，从空项目实践约 2–4 小时，均为估计，不含工具、镜像下载和签名准备</td>
-</tr>
-<tr>
-<td>你将学到</td>
-<td>分阶段需求与开发、随机抽取与同局去重、转盘动画、本地持久化与文件迁移</td>
-</tr>
-<tr>
-<td>你将完成</td>
-<td>体验现成元服务，并独立构建“设置 → 清单确认 → 轮流抽取 → 任务管理”的使用闭环</td>
-</tr>
-<tr>
-<td>实践环境</td>
-<td>云端开发环境或本地码道 IDE；HarmonyOS 工具链、手机设备或模拟器；目标 API 23，最低兼容 API 20</td>
-</tr>
-</tbody></table></div>
-<p>阅读路线：先看到结果 → 快速体验 · 从头制作 → 完整实践 · 遇到问题 → 功能检查与排障。</p>
-<p>源码仓库：<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel">HarmonyOS-AtomSer-AdventureWheel</a>。</p>
-<h2 id="1-案例概览">1. 案例概览</h2>
-<p>朋友聚会时，把手机放在大家面前，选好玩法与挑战程度，生成一张大转盘。每人点击一次，按结果完成任务，再交给下一位。这个案例帮助你把随机规则、交互动画和本地数据分开管理，也能迁移到活动抽签、学习练习等场景。</p>
-<h3 id="核心功能与体验">核心功能与体验</h3>
-<ol>
-<li>选择“真心话 / 大冒险 / 混合局”，设置 2–20 个任务和最高挑战程度。</li>
-<li>点击“立即开始”，先看本局清单；不满意可“重新生成”，确认后才开局。</li>
-<li>点击中心“开始”，转盘减速停下，突出命中扇区，以动画显示居中的完整任务卡片。</li>
-<li>点击“交给下一位”，当前任务变灰并标记“完成”，本局不会再抽到；最后一项显示“完成本局”。不想做也可以交接跳过。</li>
-<li>在“任务库”查看 190 条内置任务，或添加、编辑、启停、删除自己的任务；自定义正文最多 30 个字。</li>
-<li>导出自定义任务为 JSON，或通过“分享我的任务”生成 TXT 交给接收应用；TXT 正文仍是 JSON，新设备可导入恢复。</li>
-</ol>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
-<thead>
-<tr>
-<th align="center">开局前确认</th>
-<th align="center">转盘与完成标记</th>
-<th align="center">抽取结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><img src="https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e" alt="查看实际任务，重新生成或确认开局" width="220" style="max-width:100%;height:auto"></td>
-<td align="center"><img src="https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e" alt="已处理任务变灰并标记完成，剩余任务继续参与抽取" width="220" style="max-width:100%;height:auto"></td>
-<td align="center"><img src="https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e" alt="居中展示完整任务，结束或交给下一位" width="220" style="max-width:100%;height:auto"></td>
-</tr>
-</tbody></table></div>
-<p>首页、任务库及完整原图见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E5%25AE%259E%25E8%25B7%25B5%25E7%25B4%25A0%25E6%259D%2590%25E8%25AF%25B4%25E6%2598%258E.md#%E5%8E%9F%E5%A7%8B%E8%A7%86%E8%A7%89%E5%8F%82%E8%80%83">截图与教学素材索引</a>。</p>
-<h3 id="技术方案一览">技术方案一览</h3>
-<p><img src="arch-diagram.svg" alt="冒险大转盘纯本地技术关系" style="max-width:100%;height:auto"></p>
-<p>内置任务随工程打包，自定义任务与设置保存在本机。开局先筛选再随机组成清单，自定义任务最多占本局数量的一半。每次转动只从尚未处理的任务中选取，动画把指针停到对应扇区。</p>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
-<thead>
-<tr>
-<th>层级</th>
-<th>技术/产品</th>
-<th>兼容要求</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>端侧</td>
-<td>ArkTS / ArkUI，Stage 模型</td>
-<td>手机元服务；目标 API 23，最低兼容 API 20</td>
-<td>设置、任务库、转盘和结果交接</td>
-</tr>
-<tr>
-<td>视觉</td>
-<td>Canvas、透视变换与属性动画</td>
-<td>当前 SDK 支持的原生能力</td>
-<td>2.5D 转盘、减速、命中反馈和结果入场</td>
-</tr>
-<tr>
-<td>数据</td>
-<td>内置任务、Preferences、JSON</td>
-<td>UTF-8；自定义文件版本 1</td>
-<td>本地持久化与文件迁移</td>
-</tr>
-<tr>
-<td>文件</td>
-<td>DocumentViewPicker、文件 URI、隐式 Want</td>
-<td>选择器和接收应用须可用</td>
-<td>用户选取文件或保存位置，分享 TXT</td>
-</tr>
-<tr>
-<td>工具</td>
-<td>码道 IDE、HarmonyOS Command Line Tools；DevEco Studio 可辅助准备模拟器和签名</td>
-<td>SDK、Java、Node 与构建工具应匹配</td>
-<td>AI 开发、打包、安装与运行</td>
-</tr>
-</tbody></table></div>
-<h3 id="边界说明">边界说明</h3>
-<ul>
-<li>无服务器、无需游戏账号，不自动云同步。云端开发环境是开发入口，不是应用后端。</li>
-<li>完成状态只属于当前一局；重新开局可以遇到之前玩过的任务。转盘不用于博彩或需审计的抽签。</li>
-<li>分享的接收应用与后续动作由系统及接收方决定；对方实际取得文件才算传递成功。</li>
-<li>单份自定义文件最多导入 1000 条、大小不超过 1 MiB。当前添加和导出没有总量上限；备份超限时，使用工程附带的安全拆分工具，再逐份导入。步骤见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E6%2589%25B9%25E9%2587%258F%25E8%25BF%2581%25E7%25A7%25BB%25E8%25AF%25B4%25E6%2598%258E.md">批量任务迁移</a>，恢复核对前保留原设备和完整备份。</li>
-</ul>
-<h2 id="2-开始之前">2. 开始之前</h2>
-<h3 id="环境与资源">环境与资源</h3>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
-<thead>
-<tr>
-<th>项目</th>
-<th>要求</th>
-<th>检查或获取方式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>基础知识</td>
-<td>会操作 AI 编程工具，能核对界面与错误提示</td>
-<td>按本页逐步进行，不必先读示例源码</td>
-</tr>
-<tr>
-<td>云端开发入口</td>
-<td>鸿蒙开发实践中心作业中心的可用工作区</td>
-<td><a href="https://harmonybp.developer.huaweicloud.com/">平台入口</a>，进入环境后能使用 AI 对话</td>
-</tr>
-<tr>
-<td>本地开发入口</td>
-<td>码道 IDE 与 HarmonyOS Command Line Tools</td>
-<td><a href="https://support.huaweicloud.com/usermanual-codeartsagent/codeartsagent_ug_0002.html">码道安装指导</a>、<a href="https://developer.huawei.com/consumer/cn/deveco-studio/resources/">工具下载</a>、<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-commandline-get">命令行工具指导</a></td>
-</tr>
-<tr>
-<td>测试设备</td>
-<td>云手机，或按官方指导创建并启动的手机模拟器</td>
-<td>云端设备管理；<a href="https://developer.huawei.com/consumer/cn/doc/HarmonyOS-Guides/ide-emulator-create">本地模拟器指导</a>；AI 能识别连接目标</td>
-</tr>
-<tr>
-<td>版本与签名</td>
-<td>目标 <code>6.1.0(23)</code>，最低兼容 <code>6.0.0(20)</code>；编译 SDK 随配套工具链</td>
-<td>本地模拟器按官方无签名调试方式；真机使用自己的调试签名，云手机按平台实际要求</td>
-</tr>
-<tr>
-<td>网络</td>
-<td>获取源码、素材、SDK 和首次依赖同步需要联网</td>
-<td>AI 检查下载与解析；玩法和本地存储不依赖网络</td>
-</tr>
-</tbody></table></div>
-<p>云端、本地选择一条即可。无需为此案例创建云函数、数据库或服务器。在线工作区和云手机是否消耗配额或费用，以实际账号及平台提示为准。</p>
-<h3 id="配置与敏感信息">配置与敏感信息</h3>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
-<thead>
-<tr>
-<th>配置</th>
-<th>含义</th>
-<th>获取位置</th>
-<th>安全存放位置</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>工程标识</td>
-<td>元服务包名及版本</td>
-<td>现成案例保留原配置；独立作品使用自己的标识</td>
-<td>工程公开配置</td>
-</tr>
-<tr>
-<td>调试签名（按需）</td>
-<td>真机或明确要求签名的目标所需证书、私钥、描述文件及口令</td>
-<td>自己的开发工具或开发者账号</td>
-<td>本机安全目录或工具签名管理，不提交公仓</td>
-</tr>
-</tbody></table></div>
-<p>公开工程默认不配置签名，可生成无签名 HAP。本地模拟器调试按官方方式进行，无需把调试签名作为前置条件；真机调试需要自己的签名，云手机按平台实际要求处理。构建、安装与启动分别核对，不能用打包成功代替运行成功。参见<a href="https://developer.huawei.com/consumer/cn/develop-novice-guide/">华为开发入门</a>与<a href="https://developer.huawei.com/consumer/cn/doc/doccenter-deveco-studio/ide-signing-auto">自动签名指导</a>。</p>
-<p>不复用作者私钥或口令；签名、本地配置、缓存和构建产物由忽略规则排除。首次输入法、系统隐私同意或账号授权由你本人决定，AI 不代替接受。分享日志和任务文件前检查敏感内容。</p>
-<h2 id="3-快速体验">3. 快速体验</h2>
+<h2 id="快速体验">快速体验</h2>
 <p>这条路线使用现成代码。环境就绪后预计 15–30 分钟，完成“生成清单 → 确认开局 → 抽取并交接 → 浏览任务库”。从空项目制作请看完整实践。</p>
+<p>本案例为纯本地手机元服务：目标 API 23、最低兼容 API 20。首次获取源码、素材、SDK 和依赖时需联网，SDK、Java、Node 与构建工具须匹配，玩法不依赖服务器、数据库或游戏账号。选择云端或本地路线即可；在线工作区与云手机的配额或费用以实际账号及平台提示为准。</p>
+<p>公开工程默认不配置签名，可生成无签名 HAP。本地模拟器按官方无签名方式调试；真机使用自己的调试签名，云手机按平台实际要求。签名、口令与私人任务不提交公仓；登录、隐私同意与授权由本人决定。构建、安装与启动分别核对。</p>
 <h3 id="云端快速体验">云端快速体验</h3>
 <h4 id="第一步创建项目并导入案例">第一步：创建项目并导入案例</h4>
 <p>从<a href="https://harmonybp.developer.huaweicloud.com/">鸿蒙开发实践中心</a>案例详情进入“云端开发环境”，核对自动带入信息后创建项目。</p>
@@ -248,12 +74,12 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 <li>在“任务库 → 我添加的”保存“大冒险 / 轻松”的“在十秒内说出三种水果”；重启后查看是否保留。</li>
 </ol>
 <p>完成标志：两轮游戏与本地任务保存能完成。保留工程后继续从空项目制作。</p>
-<h2 id="4-完整实践">4. 完整实践</h2>
+<h2 id="完整实践">完整实践</h2>
 <p>从空项目开始。云端手工新建“空项目”，<strong>案例仓地址留空</strong>；本地在码道打开空文件夹。只取得下列教学数据和图片，不克隆完整工程，不复制现有应用代码。</p>
 <p>按顺序使用提示词，每步核对完成标志再继续。需求与技术文档保存在自己的项目中，后续都以它们为依据；不同工具可能需要多轮修复，不承诺一次生成相同作品。</p>
 <h3 id="统一教学素材">统一教学素材</h3>
-<p>教学素材 v1.0：190 条内置任务及 2026-10-02 的中文手机模拟器原图。字段和用途见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E5%25AE%259E%25E8%25B7%25B5%25E7%25B4%25A0%25E6%259D%2590%25E8%25AF%25B4%25E6%2598%258E.md">实践素材说明</a>，迁移契约见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E4%25BB%25BB%25E5%258A%25A1%25E6%2596%2587%25E4%25BB%25B6%25E6%25A0%25BC%25E5%25BC%258F.md">任务文件格式</a>。</p>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
+<p>教学素材采用“基础 v1.0 ＋ 2026-10-24 勘误”：190 条内置任务和 2026-10-02 的中文手机模拟器原图。固定下载保持原始版本；取得素材时按下方提示校订 truth-090 正文和文件大小单位，校订后再开发。字段和用途见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md">实践素材说明</a>，迁移契约见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md">任务文件格式</a>。</p>
+<table style="border-collapse:collapse;width:100%">
 <thead>
 <tr>
 <th>素材</th>
@@ -266,7 +92,7 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 <td>内置任务</td>
 <td><a href="https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e">下载 JSON</a></td>
 <td><code>reference/内置任务-v1.0.json</code></td>
-<td>UTF-8、v1.0；95 条真心话、95 条大冒险；不是自定义导入文件</td>
+<td>UTF-8、v1.0 基础文件；按下方勘误校订后使用，仍为 95 条真心话、95 条大冒险；不是自定义导入文件</td>
 </tr>
 <tr>
 <td>数据与素材说明</td>
@@ -278,7 +104,7 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 <td>迁移文件契约</td>
 <td><a href="https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e">下载说明</a></td>
 <td><code>reference/任务文件格式.md</code></td>
-<td>自定义文件格式版本 1</td>
+<td>自定义文件格式版本 1；下载后按下方勘误统一 1 MiB 单位</td>
 </tr>
 <tr>
 <td>首页</td>
@@ -310,7 +136,7 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 <td><code>reference/抽取结果.jpeg</code></td>
 <td>居中卡片、正文与交接</td>
 </tr>
-</tbody></table></div>
+</tbody></table>
 <p>数据、文字说明为 Apache-2.0；截图用于本案例学习与复现，系统图形和第三方标识不因此取得同一授权，详见 <a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/NOTICE.md">NOTICE</a>。</p>
 <h3 id="步骤-1检查空项目与开发环境">步骤 1：检查空项目与开发环境</h3>
 <p>目标：确认工具条件，不修改环境、不创建工程。</p>
@@ -333,6 +159,12 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 任务确认.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
 抽取结果.jpeg：https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e
 确认 JSON 能解析、图片能打开；失败时排查，不用网页或编造数据替代。
+
+下载成功后，先应用本教程的 2026-10-24 勘误，再继续设计：
+1. 内置 JSON 中只按 id="truth-090" 定位一条记录。若正文为“如果可以不打后果地做一件事，你会做什么？”，改为“如果可以不计后果地做一件事，你会做什么？”；已经是新正文则保持，其他正文或ID不唯一时停止并报告。
+2. 保留 JSON 的 UTF-8、无 BOM、缩进与换行，只替换这条正文；不改 ID、顺序、类型、程度、标签和 version="1.0"。校订后仍为 190 条、95 条真心话与95条大冒险，SHA-256 应为 81586011ce0674a05d0292313db9af838f3d224fd8c5b76e79ad378b2c1d3f0e。
+3. 下载的任务文件格式说明中“1 MB”校订为“1 MiB（1,048,576 字节）”，实际限制始终是 1024×1024 字节，不能改成1,000,000字节。
+4. 在下载的素材说明注明“基础 v1.0 ＋ 2026-10-24 勘误”；固定下载的原始文件未变，不能把校订后文件说成固定提交的原始字节。截图继续用原始版本，不改绘UI。
 
 这个元服务叫“冒险大转盘”，用于朋友线下聚会玩真心话大冒险。
 流程：选择玩法、数量和挑战程度 → 查看确认清单 → 轮流转动 → 看结果 → 交接。
@@ -389,7 +221,8 @@ truth/dare 对应真心话/大冒险，light/medium/deep 对应轻松/适中/深
 递增轮次并减少剩余数量；跳过后交接也退出本局候选。
 灰色完成扇区保留原位置，不再被选中。
 最后一项显示“完成本局”，结束返回首页，新局重新计算候选。
-检查 2 个任务整局、6 个任务连续抽取、反复点击与全部完成。</code></pre>
+检查 2 个任务整局、6 个任务连续抽取、反复点击与全部完成。
+退出、重置或重新开始旋转前，清理全部旋转、回弹和结果回调；不要让旧回调在已离开的组件上继续绘制。</code></pre>
 <p>完成标志：指针与结果一致，同局不重复，交接和结束数量正确。</p>
 <h3 id="步骤-6完善核心交互与结果呈现">步骤 6：完善核心交互与结果呈现</h3>
 <p>目标：自然衔接转动与结果，界面可读、可操作。</p>
@@ -419,9 +252,10 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 通过系统文件路由与只读文件授权交给接收应用。
 导出和分享包括全部自定义任务及停用项，不含内置任务。
 导入 JSON/TXT 先显示新增、重复、无效统计，再确认合并，不覆盖已有记录。
-单文件不超过 1 MiB、最多 1000 条，拒绝非法格式、版本与超限文件。
+单文件不超过 1 MiB（1,048,576 字节）、最多 1000 条，拒绝非法格式、版本与超限文件。
 处理选择取消、读写失败、无接收应用，提示恢复动作，不伪报发送成功。
-检查新增后重启保留、停用不被抽取、重复导入不增加、非法文件不写入。</code></pre>
+检查新增后重启保留、停用不被抽取、重复导入不增加、非法文件不写入。
+从任务库返回首页时重新读取自定义总数与启用数，新增、启停和删除后立即显示当前统计；异步初始化只完成一次，读取失败可重试，过期请求不得覆盖新统计。</code></pre>
 <p>完成标志：持久化、合并不覆盖、两种扩展名的统一契约及错误恢复可检查。</p>
 <h3 id="步骤-8运行并检查完整流程">步骤 8：运行并检查完整流程</h3>
 <p>目标：让 AI 操作设备，完成基础功能测试。</p>
@@ -441,11 +275,12 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 检查非法文件和取消选择。有接收应用时分享 TXT 并核对文件实际接收；
 没有则检查恢复提示，不能把拉起应用说成发送成功。
 检查日志，修复可复现问题并重跑。
-最后告诉我能完成哪些功能、HAP 位置及仍需我处理的事项。</code></pre>
+最后告诉我能完成哪些功能、HAP 位置及仍需我处理的事项。
+分别验证新增、启停和删除自己的任务后返回原首页，统计立即更新；轮盘旋转或回弹时快速离开、重入，旧回调不再绘制或干扰新一局。</code></pre>
 <p>完成标志：设备核心流程、本地保存与错误恢复符合预期，知道设备限制如何处理。</p>
-<h2 id="5-功能检查与排障">5. 功能检查与排障</h2>
+<h2 id="功能检查与排障">功能检查与排障</h2>
 <h3 id="体验检查">体验检查</h3>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
+<table style="border-collapse:collapse;width:100%">
 <thead>
 <tr>
 <th>#</th>
@@ -502,16 +337,16 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 <td>正文可读，结果居中，按钮可操作</td>
 <td>切换设置并检查三页</td>
 </tr>
-</tbody></table></div>
+</tbody></table>
 <h3 id="运行检查">运行检查</h3>
 <ul>
-<li><input disabled="" type="checkbox"> 构建成功且 HAP 存在，安装、启动分别成功。</li>
-<li><input disabled="" type="checkbox"> 数据读取、随机规则、本地保存与文件合并符合约定。</li>
-<li><input disabled="" type="checkbox"> 确认、交接、取消和整局结束的状态正确。</li>
-<li><input disabled="" type="checkbox"> 错误提示清楚，可恢复；日志不含凭据或私人任务。</li>
-<li><input disabled="" type="checkbox"> 空项目实践使用统一素材，完成本页核心流程。</li>
+<li>构建成功且 HAP 存在，安装、启动分别成功。</li>
+<li>数据读取、随机规则、本地保存与文件合并符合约定。</li>
+<li>确认、交接、取消和整局结束的状态正确。</li>
+<li>错误提示清楚，可恢复；日志不含凭据或私人任务。</li>
+<li>空项目实践使用统一素材，完成本页核心流程。</li>
 </ul>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
+<table style="border-collapse:collapse;width:100%">
 <thead>
 <tr>
 <th>项目</th>
@@ -550,9 +385,9 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 <td>问题恢复</td>
 <td>空内容、非法文件、取消与无接收应用均可继续</td>
 </tr>
-</tbody></table></div>
+</tbody></table>
 <h3 id="高频问题">高频问题</h3>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
+<table style="border-collapse:collapse;width:100%">
 <thead>
 <tr>
 <th>现象/错误码</th>
@@ -595,7 +430,7 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 <td>TXT 不能导入</td>
 <td>迁移</td>
 <td>正文不是 JSON 或超限</td>
-<td>对照<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E4%25BB%25BB%25E5%258A%25A1%25E6%2596%2587%25E4%25BB%25B6%25E6%25A0%25BC%25E5%25BC%258F.md">格式说明</a>，查看导入统计</td>
+<td>对照<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md">格式说明</a>，查看导入统计</td>
 </tr>
 <tr>
 <td>分享只打开一个应用</td>
@@ -615,15 +450,15 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 <td>上下文缺失</td>
 <td>重读自己文档与素材，最小修复后复查</td>
 </tr>
-</tbody></table></div>
+</tbody></table>
 <p>排查顺序：工程和素材 → 工具与构建 → 设备与签名 → 业务状态。</p>
 <pre style="white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;padding:16px;background:#f6f1e9;border-radius:10px"><code>请依据实际失败的日志或页面现象复现并定位问题。
 读取我已有的需求、技术文档与数据说明，区分环境、素材、构建、设备和业务问题。
 最小修复后重跑失败步骤；需要改环境或需求先告诉我，由我决定。
 说明原因、修改内容和重试结果；仍失败时给出具体恢复方式。</code></pre>
-<h2 id="6-安全与清理">6. 安全与清理</h2>
+<h2 id="安全与清理">安全与清理</h2>
 <h3 id="实践中的安全注意事项">实践中的安全注意事项</h3>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
+<table style="border-collapse:collapse;width:100%">
 <thead>
 <tr>
 <th>项目</th>
@@ -651,7 +486,7 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 <td>用户自行添加，无自动审核</td>
 <td>避免危险、隐私披露和打扰旁人，参与者可跳过</td>
 </tr>
-</tbody></table></div>
+</tbody></table>
 <h3 id="清理资源">清理资源</h3>
 <p>结束前保存源码、两份文档、需要保留的 HAP 和任务备份。</p>
 <pre style="white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;padding:16px;background:#f6f1e9;border-radius:10px"><code>请只读检查本次工程、设备及实际创建的资源，说明成果如何保存。
@@ -665,127 +500,20 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 <li>保留所需配置，不误删签名原件或清空已有数据。</li>
 </ol>
 <p>完成标志：成果与备份已保存，不再使用的运行资源已停止。</p>
-<h2 id="7-项目导览与进阶">7. 项目导览与进阶</h2>
-<h3 id="关键目录">关键目录</h3>
-<pre style="white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;padding:16px;background:#f6f1e9;border-radius:10px"><code>工程根目录/
-├── README.md                     # 体验与 AI 对话实践
-├── LICENSE / NOTICE.md           # 代码、数据与素材许可
-├── data/内置任务-v1.0.json         # 单独下载的教学数据
-├── AppScope/                     # 元服务标识、名称和图标
-├── entry/src/main/
-│   ├── module.json5              # 元服务入口与设备范围
-│   ├── ets/
-│   │   ├── pages/                # 首页、任务库、转盘
-│   │   ├── components/           # Canvas 转盘
-│   │   ├── engine/               # 抽样与本局状态
-│   │   ├── store/                # 本地持久化
-│   │   ├── service/              # 字数、文件契约与读写
-│   │   └── data/task-source.ets  # 成品工程的内置任务
-│   └── resources/                # 图标、字符串和页面注册
-├── tools/                        # 逻辑与公开范围检查
-├── docs/                         # 设计、格式、素材说明与原图
-└── cases/                        # 平台导入材料</code></pre>
-<p>完整实践使用自己的 <code>reference/</code> 和两份文档。完成后再对照成品的“数据 → 抽取 → 状态 → 绘制与页面”理解取舍，不必先读示例源码。</p>
-<h3 id="完成回顾">完成回顾</h3>
-<ul>
-<li>用分阶段对话形成需求、技术方案与可运行作品。</li>
-<li>分离随机结果和动画，处理同局去重与交接状态。</li>
-<li>保存自定义任务，用明确的数据契约跨设备迁移。</li>
-</ul>
+<h2 id="进阶实践">进阶实践</h2>
 <h3 id="深入阅读与扩展">深入阅读与扩展</h3>
 <ul>
-<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E8%25AE%25BE%25E8%25AE%25A1%25E8%25AF%25B4%25E6%2598%258E.md">设计说明</a>：页面分工、随机规则与本地架构。</li>
-<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E4%25BB%25BB%25E5%258A%25A1%25E6%2596%2587%25E4%25BB%25B6%25E6%25A0%25BC%25E5%25BC%258F.md">任务文件格式</a>：字段、校验、重复和合并。</li>
-<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E6%2589%25B9%25E9%2587%258F%25E8%25BF%2581%25E7%25A7%25BB%25E8%25AF%25B4%25E6%2598%258E.md">批量任务迁移</a>：安全拆分超限备份，逐份恢复并核对。</li>
-<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E5%25AE%259E%25E8%25B7%25B5%25E7%25B4%25A0%25E6%259D%2590%25E8%25AF%25B4%25E6%2598%258E.md">实践素材说明</a>：教学数据、视觉参考和许可。</li>
-<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%25E6%25A1%2588%25E4%25BE%258B%25E5%25AF%25BC%25E5%2585%25A5%25E8%25AF%25B4%25E6%2598%258E.md">案例导入说明</a>：维护者使用的平台材料。</li>
+<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E.md">设计说明</a>：页面分工、随机规则与本地架构。</li>
+<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md">任务文件格式</a>：字段、校验、重复和合并。</li>
+<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E6%89%B9%E9%87%8F%E8%BF%81%E7%A7%BB%E8%AF%B4%E6%98%8E.md">批量任务迁移</a>：安全拆分超限备份，逐份恢复并核对。</li>
+<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md">实践素材说明</a>：教学数据、视觉参考和许可。</li>
+<li><a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E6%A1%88%E4%BE%8B%E5%AF%BC%E5%85%A5%E8%AF%B4%E6%98%8E.md">案例导入说明</a>：维护者使用的平台材料。</li>
 </ul>
 <p>可给自己的作品增加任务分类：</p>
 <pre style="white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;padding:16px;background:#f6f1e9;border-radius:10px"><code>请在我的作品中增加可编辑的自定义任务分类，支持按分类选择本局候选。
 先读取文档和实现，说明修改范围、文件版本兼容与检查方法，我确认后再实现。
 不要下载或复制案例代码，不覆盖我的任务。
 验证新增分类、旧文件导入和原有抽取、保存流程，说明使用方式与结果。</code></pre>
-<h2 id="8-参考与维护">8. 参考与维护</h2>
-<h3 id="官方资料与帮助">官方资料与帮助</h3>
-<ul>
-<li><a href="https://harmonybp.developer.huaweicloud.com/">鸿蒙开发实践中心</a>：在线开发实践入口。</li>
-<li><a href="https://support.huaweicloud.com/usermanual-codeartsagent/codeartsagent_ug_0002.html">码道安装指导</a>。</li>
-<li><a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-commandline-get">HarmonyOS Command Line Tools</a>。</li>
-<li><a href="https://developer.huawei.com/consumer/cn/deveco-studio/">DevEco Studio</a>及<a href="https://developer.huawei.com/consumer/cn/doc/HarmonyOS-Guides/ide-emulator-create">模拟器指导</a>。</li>
-<li><a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-file-picker">DocumentViewPicker API</a>。</li>
-<li><a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-errorcode-00303-1#section191211454141814">Hvigor 配置错误说明</a>。</li>
-</ul>
-<p>通过<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/issues">仓库 Issues 入口</a>反馈设备、步骤和脱敏现象。不要公开签名材料、凭据或私人任务文件；安全问题也不在公开讨论中附敏感细节。</p>
-<h3 id="维护信息">维护信息</h3>
-<div style="max-width:100%;overflow-x:auto"><table style="border-collapse:collapse;width:100%">
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>维护团队</td>
-<td>鸿蒙开发实践中心 · 在线开发实践平台</td>
-</tr>
-<tr>
-<td>当前案例版本</td>
-<td>文档 v1.1；教学素材 v1.0；工程版本 <code>1.0.0</code></td>
-</tr>
-<tr>
-<td>文档更新日期</td>
-<td>2026-10-16</td>
-</tr>
-<tr>
-<td>代码获取方式</td>
-<td>默认分支最新内容</td>
-</tr>
-<tr>
-<td>教学素材版本</td>
-<td>v1.0；数据与五张原图采用素材表中的固定文件版本</td>
-</tr>
-<tr>
-<td>实践路径</td>
-<td>第 3 章体验现成代码，第 4 章从空项目独立构建</td>
-</tr>
-<tr>
-<td>兼容限制</td>
-<td>手机元服务；目标 API 23、最低兼容 API 20；安装须满足签名条件</td>
-</tr>
-</tbody></table></div>
-<h4 id="案例迭代记录">案例迭代记录</h4>
-<ul>
-<li>2026-08-26：樱桃可乐配色、2.5D 转盘、本地任务库、同局标记和 TXT / JSON 迁移。</li>
-<li>2026-09-30：整理工程说明、文件契约和平台导入材料。</li>
-<li>2026-10-02：采用元服务仓库名称，补齐当前实拍图、教学数据、两条体验路径与空项目 AI 实践。</li>
-<li>2026-10-15：统一首屏封面与正文关键实拍，区分设备签名条件，补齐安全备份拆分，并同步平台教程和发布图片。</li>
-<li>2026-10-16：按最新版案例生成 skill 重制发布包，补齐拓展实践标签；工程和教学原图不变。</li>
-</ul>
-<h3 id="许可证">许可证</h3>
-<p>原创源码、文档和教学任务数据采用 <a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/LICENSE">Apache License 2.0</a>。图标、截图、宣传图片及第三方标识范围见 <a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/NOTICE.md">NOTICE</a>，代码许可不自动扩展到这些素材和商标。</p>
-<h2 id="backup-migration">超限备份的安全恢复</h2>
-<p>更新日期：2026-10-15。适用于“冒险大转盘”的版本 1 JSON/TXT 自定义任务备份，不适用于内置教学数据。</p>
-<p>元服务可以导出全部自定义任务，但每次导入最多 1000 条、文件不超过 1 MiB。超过限制时，不必删掉任务：在电脑上用工程附带的工具拆分，再逐份导入。</p>
-<h2 id="让-ai-帮你拆分">让 AI 帮你拆分</h2>
-<p>先在元服务“任务库 → 我添加的 → 导出任务”保存完整备份，复制到电脑。保留原设备和备份，不在公开对话中粘贴私人任务正文。在已获取本案例的本地工作区输入：</p>
-<pre style="white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;padding:16px;background:#f6f1e9;border-radius:10px"><code>我需要把冒险大转盘的自定义任务迁移到另一台设备。
-请先让我提供本机备份文件的位置，不要让我把任务正文贴到公开对话。
-使用当前工程的 tools/split-task-backup.mjs，使用已有 Node.js，
-把文件拆到一个新的独立输出目录；不得改写、覆盖或删除原备份和已有文件。
-每份必须同时满足最多 1000 条、最多 1 MiB，保留原任务顺序及字段内容。
-生成后把各份 tasks 按顺序拼回核对与原任务完全一致，告诉我条数和文件位置。
-只报告统计，不输出私人任务正文；遇到无效记录先说明问题，不擅自删改。</code></pre>
-<p>工具由 AI 调用即可，不要求你手写代码。熟悉命令行时也可在工程根目录运行：</p>
-<pre style="white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;padding:16px;background:#f6f1e9;border-radius:10px"><code>node tools/split-task-backup.mjs &quot;原备份文件.json&quot; &quot;新的输出目录&quot;</code></pre>
-<p>输入也可以是包含 JSON 的 TXT。输出目录的父目录须已存在，输出目录必须是新的；若目录已存在，工具直接停止，不覆盖文件。原备份超过 50 MiB 时，工具也会停止并要求另行评估。</p>
-<h2 id="在新设备恢复">在新设备恢复</h2>
-<ol>
-<li>把输出的 <code>adventure-wheel-tasks-001.json</code>、<code>002.json</code> 等全部传到目标设备。</li>
-<li>打开“任务库 → 我添加的 → 导入任务”，按编号逐份选择，查看新增、重复与无效统计后确认。</li>
-<li>在原本为空的任务库中，新增总数应等于备份中按“类型＋正文”规则去重后的有效任务数；已有任务库合并时应扣除本地重复项。</li>
-<li>抽查任务正文、类型、程度和启用状态，包括停用项。确认全部恢复成功后，再自行决定是否清理原设备或备份。</li>
-</ol>
-<p>拆分不删重、不清洗文字，也不修改记录的字段；正常导入仍会去掉正文首尾空白，并按元服务规则处理重复项。拆分核对通过不代表另一台设备已导入成功，最终以目标设备的实际结果为准。</p>
-<p>字段及去重规则见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/%25E4%25BB%25BB%25E5%258A%25A1%25E6%2596%2587%25E4%25BB%25B6%25E6%25A0%25BC%25E5%25BC%258F.md">任务文件格式</a>。备份是明文，请核对接收对象与文件保存位置。</p>
-
-</article>
+<h3 id="backup-migration">超限备份的安全恢复</h3>
+<p>自定义任务导出没有总量上限，但每份导入文件最多 1000 条、大小不超过 1 MiB；JSON 与正文为 JSON 的 TXT 使用同一版本 1 契约。超限备份先在电脑上用工程附带的 <code>tools/split-task-backup.mjs</code> 安全拆分，再按编号逐份导入；不修改原备份、字段或任务顺序，也不以删任务规避限制。</p>
+<p>完整操作与可复制提示词见<a href="https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/blob/master/docs/%E6%89%B9%E9%87%8F%E8%BF%81%E7%A7%BB%E8%AF%B4%E6%98%8E.md">批量任务迁移说明</a>。在目标设备进入“任务库 → 我添加的 → 导入任务”，逐份核对新增、重复与无效统计，并抽查正文、类型、程度和启用状态；目标设备实际恢复成功前保留原设备和完整备份。拆分核对通过不能代替目标设备恢复验收，明文备份只发给确认的接收对象。</p>

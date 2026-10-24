@@ -1,15 +1,15 @@
 /**
  * 内置任务库
- * 总共约200条，真心话100条 + 大冒险100条
+ * 共190条，真心话95条 + 大冒险95条
  * 全部遵守法律法规，不涉及人身安全威胁
  */
 import { TaskItem, TaskType, RiskLevel } from '../model/TaskItem';
 
 // ============================================================
-//  真心话任务 (100条)
+//  真心话任务 (95条)
 // ============================================================
 const TRUTH_TASKS: TaskItem[] = [
-  // ── 轻度 (LIGHT) ── 社交破冰 ~35条
+  // ── 轻度 (LIGHT) ── 社交破冰 35条
   { id: 'truth-001', type: TaskType.TRUTH, level: RiskLevel.LIGHT, text: '说一件你做过最尴尬的事',
     isCustom: false,
     tags: ['回忆', '搞笑'] },
@@ -116,7 +116,7 @@ const TRUTH_TASKS: TaskItem[] = [
     isCustom: false,
     tags: ['旅行', '幻想'] },
 
-  // ── 中度 (MEDIUM) ── 走心互动 ~45条
+  // ── 中度 (MEDIUM) ── 走心互动 40条
   { id: 'truth-036', type: TaskType.TRUTH, level: RiskLevel.MEDIUM, text: '说一件你后悔但已经无法挽回的事',
     isCustom: false,
     tags: ['回忆', '走心'] },
@@ -238,7 +238,7 @@ const TRUTH_TASKS: TaskItem[] = [
     isCustom: false,
     tags: ['回忆', '走心'] },
 
-  // ── 深度 (DEEP) ── 熟人专属 ~20条
+  // ── 深度 (DEEP) ── 熟人专属 20条
   { id: 'truth-076', type: TaskType.TRUTH, level: RiskLevel.DEEP, text: '你有没有欺骗过你在乎的人？',
     isCustom: false,
     tags: ['走心', '探索'] },
@@ -281,7 +281,7 @@ const TRUTH_TASKS: TaskItem[] = [
   { id: 'truth-089', type: TaskType.TRUTH, level: RiskLevel.DEEP, text: '你内心最深处的恐惧是什么？',
     isCustom: false,
     tags: ['探索'] },
-  { id: 'truth-090', type: TaskType.TRUTH, level: RiskLevel.DEEP, text: '如果可以不打后果地做一件事，你会做什么？',
+  { id: 'truth-090', type: TaskType.TRUTH, level: RiskLevel.DEEP, text: '如果可以不计后果地做一件事，你会做什么？',
     isCustom: false,
     tags: ['探索'] },
   { id: 'truth-091', type: TaskType.TRUTH, level: RiskLevel.DEEP, text: '你对"命运"这个词有什么看法？',
@@ -302,10 +302,10 @@ const TRUTH_TASKS: TaskItem[] = [
 ];
 
 // ============================================================
-//  大冒险任务 (100条)
+//  大冒险任务 (95条)
 // ============================================================
 const DARE_TASKS: TaskItem[] = [
-  // ── 轻度 (LIGHT) ── ~35条
+  // ── 轻度 (LIGHT) ── 35条
   { id: 'dare-001', type: TaskType.DARE, level: RiskLevel.LIGHT, text: '模仿一位在场朋友说话1分钟',
     isCustom: false,
     tags: ['模仿', '搞笑'] },
@@ -412,7 +412,7 @@ const DARE_TASKS: TaskItem[] = [
     isCustom: false,
     tags: ['互动', '表演'] },
 
-  // ── 中度 (MEDIUM) ── ~45条
+  // ── 中度 (MEDIUM) ── 40条
   { id: 'dare-036', type: TaskType.DARE, level: RiskLevel.MEDIUM, text: '对右边的朋友说一句你平时不好意思说的感谢',
     isCustom: false,
     tags: ['社交', '走心'] },
@@ -534,7 +534,7 @@ const DARE_TASKS: TaskItem[] = [
     isCustom: false,
     tags: ['社交', '轻松'] },
 
-  // ── 深度 (DEEP) ── ~20条
+  // ── 深度 (DEEP) ── 20条
   { id: 'dare-076', type: TaskType.DARE, level: RiskLevel.DEEP, text: '向在场一位曾有小误会的朋友表达一次善意',
     isCustom: false,
     tags: ['社交', '勇气'] },
