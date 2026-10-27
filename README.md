@@ -612,3 +612,5 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 ### 许可证
 
 原创源码、文档和教学任务数据采用 [Apache License 2.0](./LICENSE)。图标、截图、宣传图片及第三方标识范围见 [NOTICE](./NOTICE.md)，代码许可不自动扩展到这些素材和商标。
+
+发布图片的排版文字采用 [HarmonyOS Sans SC](https://developer.huawei.com/consumer/cn/design/resource-V1/)，字体遵循华为官方字体许可。
