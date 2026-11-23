@@ -7,7 +7,7 @@
 | 项目 | 内容 |
 | --- | --- |
 | 适合谁 | 能使用 AI 编程工具、愿意核对界面和运行结果的开发者；不要求先会手写 ArkTS |
-| 难度与耗时 | 入门到进阶；快速体验约 15–30 分钟，从空项目实践约 2–4 小时，均为估计，不含工具、镜像下载和签名准备 |
+| 难度与耗时 | 入门 · 快速体验约 30 分钟（估算）。完整实践约 2–4 小时。按已具备通用工具链和兼容设备估算。 |
 | 你将学到 | 分阶段需求与开发、随机抽取与同局去重、转盘动画、本地持久化与文件迁移 |
 | 你将完成 | 体验现成元服务，并独立构建“设置 → 清单确认 → 轮流抽取 → 任务管理”的使用闭环 |
 | 实践环境 | 云端开发环境或本地码道 IDE；HarmonyOS 工具链、手机设备或模拟器；目标 API 23，最低兼容 API 20 |
@@ -83,7 +83,7 @@ flowchart LR
 
 云端、本地选择一条即可。无需为此案例创建云函数、数据库或服务器。在线工作区和云手机是否消耗配额或费用，以实际账号及平台提示为准。
 
-### 配置与敏感信息
+#### 敏感信息与配置边界
 
 | 配置 | 含义 | 获取位置 | 安全存放位置 |
 | --- | --- | --- | --- |
@@ -96,7 +96,7 @@ flowchart LR
 
 ## 3. 快速体验
 
-这条路线使用现成代码。环境就绪后预计 15–30 分钟，完成“生成清单 → 确认开局 → 抽取并交接 → 浏览任务库”。从空项目制作请看[完整实践](#4-完整实践)。
+这条路线使用现成代码。环境就绪后预计 30 分钟，完成“生成清单 → 确认开局 → 抽取并交接 → 浏览任务库”。从空项目制作请看[完整实践](#4-完整实践)。
 
 ### 云端快速体验
 
@@ -231,14 +231,14 @@ https://gitcode.com/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel
 
 | 素材 | 下载地址 | 保存位置 | 格式、版本与使用说明 |
 | --- | --- | --- | --- |
-| 内置任务 | [下载 JSON](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/内置任务-v1.0.json` | UTF-8、v1.0 基础文件；按下方勘误校订后使用，仍为 95 条真心话、95 条大冒险；不是自定义导入文件 |
-| 数据与素材说明 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/实践素材说明.md` | 字段、枚举、用途和许可 |
-| 迁移文件契约 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务文件格式.md` | 自定义文件格式版本 1；下载后按下方勘误统一 1 MiB 单位 |
-| 首页 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E9%A6%96%E9%A1%B5.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/首页.jpeg` | JPEG、1256×2760；玩法、数量与程度 |
-| 转盘 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/转盘.jpeg` | 2.5D 转盘及两个已处理扇区 |
-| 任务库 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E5%BA%93.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务库.jpeg` | 内置内容与搜索筛选 |
-| 任务确认 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/任务确认.jpeg` | 实际清单，可重新生成 |
-| 抽取结果 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | `reference/抽取结果.jpeg` | 居中卡片、正文与交接 |
+| 内置任务 | [下载 JSON](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/data/%E5%86%85%E7%BD%AE%E4%BB%BB%E5%8A%A1-v1.0.json?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/内置任务-v1.0.json` | UTF-8、v1.0 基础文件；按下方勘误校订后使用，仍为 95 条真心话、95 条大冒险；不是自定义导入文件 |
+| 数据与素材说明 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E5%AE%9E%E8%B7%B5%E7%B4%A0%E6%9D%90%E8%AF%B4%E6%98%8E.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/实践素材说明.md` | 字段、枚举、用途和许可 |
+| 迁移文件契约 | [下载说明](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/%E4%BB%BB%E5%8A%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F.md?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/任务文件格式.md` | 自定义文件格式版本 1；下载后按下方勘误统一 1 MiB 单位 |
+| 首页 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E9%A6%96%E9%A1%B5.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/首页.jpeg` | JPEG、1256×2760；玩法、数量与程度 |
+| 转盘 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E8%BD%AC%E7%9B%98.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/转盘.jpeg` | 2.5D 转盘及两个已处理扇区 |
+| 任务库 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E5%BA%93.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/任务库.jpeg` | 内置内容与搜索筛选 |
+| 任务确认 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/任务确认.jpeg` | 实际清单，可重新生成 |
+| 抽取结果 | [查看原图](https://api.gitcode.com/api/v5/repos/harmony-practice-center/HarmonyOS-AtomSer-AdventureWheel/raw/docs/images/%E5%AE%9E%E6%8B%8D-20261002/%E6%8A%BD%E5%8F%96%E7%BB%93%E6%9E%9C.jpeg?ref=abe5f1bffcf0c801f5d9a530d4b49a321456cb7e) | 示例路径 `reference/抽取结果.jpeg` | 居中卡片、正文与交接 |
 
 数据、文字说明为 Apache-2.0；截图用于本案例学习与复现，系统图形和第三方标识不因此取得同一授权，详见 [NOTICE](./NOTICE.md)。
 
@@ -390,7 +390,7 @@ truth/dare 对应真心话/大冒险，light/medium/deep 对应轻松/适中/深
 
 ```text
 按两份文档实现“我添加的”管理，用 Preferences 保存任务和首页设置。
-支持新增、编辑、启停、删除。正文去首尾空白后非空、最多 30 个 Unicode 字符；
+支持新增、编辑、启停、删除。正文去首尾空白后非空、最多 30 个 Unicode 码点；
 输入、保存和导入使用同一规则。同类型同正文去重时忽略空白与英文大小写。
 关闭编辑不保存草稿，删除先确认；停用任务保留但不参与开局。
 本局清单和完成集合只属于当前会话，不持久化为历史完成状态。
@@ -565,14 +565,31 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 - [实践素材说明](./docs/实践素材说明.md)：教学数据、视觉参考和许可。
 - [案例导入说明](./docs/案例导入说明.md)：维护者使用的平台材料。
 
-可给自己的作品增加任务分类：
+### 自定义任务分类
 
-```text
-请在我的作品中增加可编辑的自定义任务分类，支持按分类选择本局候选。
-先读取文档和实现，说明修改范围、文件版本兼容与检查方法，我确认后再实现。
-不要下载或复制案例代码，不覆盖我的任务。
-验证新增分类、旧文件导入和原有抽取、保存流程，说明使用方式与结果。
-```
+朋友聚会换主题时，可以从适合当前场合的任务池开始。
+
+兼顾未分类的旧任务、既有备份及空类别的处理。
+
+### 元服务内安全分批导出
+
+任务较多时，用户可以分批保存和转移资料，避免一次导出容量过大。
+
+考虑单份体积限制、批次识别与重复导入时的处理。
+
+### 宽屏与多窗口布局
+
+玩家在平板或分屏中打开转盘时，也能方便地操作并查看结果。
+
+兼顾大屏布局与原手机流程，明确不同窗口宽度下的操作区。
+
+### 可迁移场景
+
+**聚会互动与活动抽签**。把任务替换为自愿参加的互动题或活动签条，保留先确认再抽取的流程。
+
+**学习练习卡**。把任务库换成练习题，在本轮完成后排除该题，通过文件交换自定义题组。
+
+**离线自定义模板**。用同样的导入预览与只合并新条目策略，维护轻量活动或清单模板。
 
 ## 8. 参考与维护
 
@@ -591,9 +608,9 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 
 | 项目 | 内容 |
 | --- | --- |
-| 维护团队 | 鸿蒙开发实践中心 · 在线开发实践平台 |
+| 维护团队 | 鸿蒙开发实践中心|
 | 当前案例版本 | 文档 v1.2；教学素材基础 v1.0 ＋ 2026-10-24 勘误；工程版本 `1.0.0` |
-| 文档更新日期 | 2026-10-24 |
+| 文档更新日期 | 2026-11-23 |
 | 代码获取方式 | 默认分支最新内容 |
 | 教学素材版本 | 基础 v1.0 固定下载；数据和文字按 2026-10-24 勘误校订，五张原图保持原版本 |
 | 实践路径 | 第 3 章体验现成代码，第 4 章从空项目独立构建 |
@@ -601,6 +618,8 @@ tasks 只带 type、level、text、enabled，不带本地 ID 或时间戳。
 
 #### 案例迭代记录
 
+
+- 2026-11-23。将已有拓展方向改成场景、价值和设计取舍说明，并精简对应的案例详情卡片。
 - 2026-10-24：修复任务库返回首页统计与转盘回调清理，校正任务注释、truth-090正文及1 MiB单位；同步素材勘误、教学检查与五段教程。
 
 - 2026-08-26：樱桃可乐配色、2.5D 转盘、本地任务库、同局标记和 TXT / JSON 迁移。
