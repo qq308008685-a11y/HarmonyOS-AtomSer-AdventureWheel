@@ -176,20 +176,36 @@
     "description": "<p>工程按页面、可视组件、随机规则、本地存储和文件服务分工，没有云后端。</p><ul><li>SetupPage 调用 TaskEngine 生成并确认清单；WheelPage / WheelRoundState 管理本局完成集合，WheelCanvas 表达已决定的抽取结果。</li><li>TaskLibraryPage 通过 LocalTaskStore 维护自定义任务，通过 TaskTransferService 读写文件和启动系统接收入口。</li><li>TaskTextRules、TaskTransferValidator 与 TaskTransferPackageBuilder 统一字数、校验和可携带结构。</li><li>独立的电脑辅助工具可安全拆分超限备份，不改变元服务界面。</li><li>数据流：设置 → 清单确认 → 转盘命中 → 结果卡片 → 交接与完成标记。</li><li>自定义任务由用户主动在 Preferences 与 JSON / TXT 文件间迁移，不是自动云同步。</li></ul>"
   },
   "preview": {
-    "intro": "真实手机界面展示轮流抽取与同局不重复；更多首页、确认与任务库原图在 README 的素材索引中。",
+    "intro": "以下预览分别展示应用的主要页面与操作。",
     "devices": [
       {
         "deviceType": "phone",
         "deviceName": "手机",
-        "previewImage": "preview-phone.png",
-        "description": "当前转盘保留已处理任务的位置，以灰色和“完成”文字标记，未处理任务继续参与抽取。",
-        "previewTitle": "轮流开转|同局不重复",
+        "previewImage": "preview-phone-home.png",
+        "description": "在首页选择游戏模式。",
+        "previewTitle": "大转盘首页",
         "previewLines": [
-          "确认清单后再开局",
-          "转盘停稳，查看完整任务",
-          "完成扇区变灰并保留位置",
-          "未处理任务继续参与抽取",
-          "自己的玩法保存在本机"
+          "在首页选择游戏模式"
+        ]
+      },
+      {
+        "deviceType": "phone",
+        "deviceName": "手机",
+        "previewImage": "preview-phone-spin.png",
+        "description": "旋转转盘并查看抽到的任务。",
+        "previewTitle": "转盘抽题",
+        "previewLines": [
+          "旋转转盘并查看抽到的任务"
+        ]
+      },
+      {
+        "deviceType": "phone",
+        "deviceName": "手机",
+        "previewImage": "preview-phone-tasks.png",
+        "description": "在任务库中浏览可用题目。",
+        "previewTitle": "任务库",
+        "previewLines": [
+          "在任务库中浏览可用题目"
         ]
       }
     ]
